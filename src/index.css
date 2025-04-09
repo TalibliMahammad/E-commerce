@@ -1,0 +1,10 @@
+input[type=number]::-webkit-inner-spin-button {
+    background-color: rgb(109, 53, 53); /* Arxa fon rəngi */
+    height: 20px;                 /* Hündürlük */
+    width: 20px;                  /* En */
+  }
+
+
+
+
+
