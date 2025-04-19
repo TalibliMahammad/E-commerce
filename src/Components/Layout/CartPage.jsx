@@ -8,7 +8,7 @@ import imageCart from './../../assets/image.png'
 const CartPage = () => {
     return (
         <div>
-            <Header />
+            <Header /> 
             <div className='  m-23 flex flex-col gap-10'>
                 <div className='bg-stone-100 flex justify-around py-5 rounded-2xl'>
                     <span>Product</span>
@@ -56,6 +56,7 @@ const CartPage = () => {
 
           
             <Footer />
+        
         </div>
     )
 }

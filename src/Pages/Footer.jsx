@@ -9,7 +9,7 @@ const Footer = () => {
     return (
 
 
-        <div className=' mt-[100px]   justify-center items-center flex bg-black text-white'>
+        <div className=' mt-5   justify-center items-center flex bg-black text-white'>
 
 
             <div className='flex  flex-col lg:flex-row   py-10 lg:justify-evenly gap-10'>
@@ -81,7 +81,7 @@ const Footer = () => {
                 </div>
 
             </div>
-
+        
         </div>
     )
 }

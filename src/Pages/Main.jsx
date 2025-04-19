@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FlashSales from '../Components/Layout/FlashSales'
 import CategoryBox from '../Components/Layout/CategoryBox'
 import BestSelling from '../Components/Layout/BestSelling'
@@ -8,10 +8,25 @@ import PromotionSection from '../Components/Layout/PromotionSection'
 import FeaturedBottom from '../Components/Layout/FeaturedBottom'
 import FeaturedSection from '../Components/Layout/FeaturedSection'
 import OurProducts from '../Components/Layout/OurProducts'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchProducts } from '../Redux/CreateSlice/FetchDataSlice'
+import { Link } from 'react-router-dom'
+
 
 const Main = () => {
 
+  const dispatch = useDispatch();
 
+
+
+  // Data yüklənəndə çağırırıq
+  useEffect(() => {
+    dispatch(fetchProducts());
+  },[dispatch] )
+
+
+
+  
   return (
     <>
 
@@ -28,16 +43,16 @@ const Main = () => {
               Flash Sales
             </span>
 
-            <div className='flex-col  bg-stone-200  p-3 rounded-2xl flex '>
+            <div className='flex-col  bg-stone-100  p-3  flex '>
 
-              <div className='flex md:text-[20px] gap-[15px] md:gap-[23px]  items-end'>
+              <div className='flex md:text-[15px] gap-[15px] md:gap-[10px]  items-end'>
                 <span>Days</span>
                 <span>Hours</span>
                 <span>Minutes</span>
                 <span>Seconds</span>
               </div>
 
-              <div className='flex  w-[220px] md:w-[285px] md:text-[20px]  justify-between gap-[15px] md:gap-[20px] items-end'>
+              <div className='flex  pr-5 px-1 md:text-[15px]  justify-between   items-end'>
                 <h4>03</h4>
                 <span>:</span>
                 <h4>24</h4>
@@ -66,7 +81,9 @@ const Main = () => {
 
 
         <div className=' flex flex-col items-center justify-center'>
+          <Link to="/AllProducts/clothes" className='flex flex-col items-center justify-center'>
           <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
+          </Link>
           <div className='border-b border-gray-300 h-[1px] w-full mt-[60px]  mr-auto'></div>
         </div>
 
