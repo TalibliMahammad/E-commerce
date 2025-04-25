@@ -24,16 +24,16 @@ const Header = () => {
 
   const { data } = useSelector((state => state.fetchState))
   const dispatch = useDispatch()
-
-
+  const { WishListData } = useSelector((state) => state.wishState)
+  const DataCart = useSelector((state) => state.cartState.items)
 
   return (
 
     <header>
 
-      <div className='bg-black lg:h-[8vh] text-white lg:justify-end  justify-center flex items-center pr-0 lg:pr-[30px]'>
+      <div className='bg-black lg:h-[8vh] text-white lg:justify-end  justify-center flex items-center pr-0 lg:pr-[15px]'>
 
-        <div className="xl:w-[58.5%] w-[70%] lg:w-[80%] text-[13px] lg:text-[17px] text-center  flex flex-col  items-center  lg:flex-row   lg:justify-between  gap-2 lg:gap-4 xl:mr-[100px]">
+        <div className="xl:w-[64%] w-[70%] lg:w-[80%] text-[13px] lg:text-[17px] text-center  flex flex-col  items-center  lg:flex-row   lg:justify-between  gap-2 lg:gap-4 xl:mr-[100px]">
 
           <span className=' flex flex-col items-center lg:flex-row gap-[20px]'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
             <h3 className='  underline '>ShowNow</h3>
@@ -94,9 +94,17 @@ const Header = () => {
             </div>
 
             <div className='hidden md:flex items-center text-[30px] gap-8 '>
-              <Link to="/wishList">  <CiHeart /></Link>
-              <Link to="/cart"> <CiShoppingCart /></Link>
+              <div className='relative flex  gap-6'>
+                <Link to="/wishList">
+                  <span className=' bg-orange-400  rounded-[20px] w-5 absolute text-[15px] bottom-4  flex  justify-center left-4'>{WishListData.length ? WishListData.length : ""} </span>
+                  <CiHeart className='relative ' /></Link>
+              </div>
 
+              <div className='relative flex gap-6'>
+                <Link to="/cart">
+                  <span className=' bg-orange-400  rounded-[20px] w-5 absolute text-[15px] bottom-4  flex  justify-center left-4'>{DataCart.length ? DataCart.length : ""} </span>
+                  <CiShoppingCart /></Link>
+              </div>
               <div className='relative '>
 
                 {(localData && window.location.pathname === "/") ? (

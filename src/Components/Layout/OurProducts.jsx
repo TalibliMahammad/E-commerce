@@ -4,11 +4,13 @@ import { CiHeart } from 'react-icons/ci'
 import useSelection from 'antd/es/table/hooks/useSelection'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import CartButton from './CartButton'
 
 
 const OurProducts = () => {
 
     const { data } = useSelector(state => state.fetchState)
+
 
 
 
@@ -37,7 +39,7 @@ const OurProducts = () => {
             <div className='flex flex-wrap justify-evenly  gap-10  lg:px-15 '>
 
                 {
-                    data.slice(0, 10).map((item, key) => (
+                    data.map((item, key) => (
                         <div key={key} className="flex flex-col items-center gap-5">
 
                             <div className="relative group h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] flex gap-[20px] rounded-2xl">
@@ -52,15 +54,13 @@ const OurProducts = () => {
                                     alt="Product"
                                 />
 
-                                <span className="opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center bg-black text-white px-4 py-2 transition-opacity duration-300">
-                                    Add To Cart
-                                </span>
+                                <CartButton item={item}/>
                             </div>
 
                             <span className="flex flex-col items-center gap-2">
                                 <h3>{item.title || "Product Title"}</h3>
                                 <h3>{item.price ? `${item.price}$` : "Price not available"}</h3>
-                                
+
                             </span>
                         </div>
                     ))
@@ -74,13 +74,13 @@ const OurProducts = () => {
             </div>
 
 
-<Link  to="/AllProducts/furniture" className='flex flex-col items-center justify-center'>
-<div className='flex justify-center  flex-col md:mr-[80px] '>
-                <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
-            </div>
+            <Link to="/AllProducts/groceries" className='flex flex-col items-center justify-center'>
+                <div className='flex justify-center  flex-col md:mr-[80px] '>
+                    <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
+                </div>
 
-</Link>
-           
+            </Link>
+
 
         </div>
     )

@@ -3,11 +3,13 @@ import image1 from './../../assets/apple-iphone-13-promotion-display.png'
 import { CiHeart } from 'react-icons/ci'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import CartButton from './CartButton'
 
 const BestSelling = () => {
 
     const { data } = useSelector(state => state.fetchState)
 
+;
 
 
     return (
@@ -28,7 +30,7 @@ const BestSelling = () => {
                     </span>
 
 
-                    <Link to="/AllProducts/electronics" className='flex flex-col md:flex-row items-center gap-5'>
+                    <Link to="/AllProducts/fragrances" className='flex flex-col md:flex-row items-center gap-5'>
 
                         <div className='flex justify-center  flex-col md:mr-[80px] '>
                             <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
@@ -53,13 +55,11 @@ const BestSelling = () => {
 
                                 <img
                                     className="rounded-2xl w-full h-full object-cover"
-                                    src={item.images?.[0] || "https://via.placeholder.com/300"}
+                                    src={item.images[0]}
                                     alt="Product"
                                 />
 
-                                <span className="opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center bg-black text-white px-4 py-2 transition-opacity duration-300">
-                                    Add To Cart
-                                </span>
+                            <CartButton item={item} />
                             </div>
 
                             <span className="flex flex-col items-center gap-2">

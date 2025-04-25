@@ -7,9 +7,9 @@ export const fetchProducts = () => async (dispatch) => {
 
 
     try {
-        const res = await fetch("https://api.escuelajs.co/api/v1/products")
+        const res = await fetch('https://dummyjson.com/products')
         const data = await res.json();
-        dispatch(fetchDataSuccess(data));
+        dispatch(fetchDataSuccess(data.products));
     } catch (error) {
         dispatch(fetchDataFailure(error.message));
     }

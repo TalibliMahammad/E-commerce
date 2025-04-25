@@ -7,19 +7,21 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import image1 from './../../assets/apple-event-september-9-41-58-screenshot.png'
-import image2 from './../../assets/NPI-Pre-Order-Announce-USP-16-Pro-Blog-Banner.jpg'
-import image3 from './../../assets/Does-the-iPhone-16-Come-with-Promotion-Display.webp'
-import image4 from './../../assets/apple-iphone-13-promotion-display.png'
+import { FaHeart } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { heartsFunc } from '../../Redux/CreateSlice/WishList';
+import Cart from '../../Pages/Cart';
+import CartButton from './CartButton';
+import { addItem } from '../../Redux/CreateSlice/CartSlice';
 
 export default function FlashSales() {
-
-
     const { data } = useSelector((state) => state.fetchState)
+    const dispatch = useDispatch()
+
+    const { WishListData } = useSelector((state) => state.wishState)
 
 
 
@@ -72,19 +74,31 @@ export default function FlashSales() {
                 className="mySwiper h-[70vh]  w-[100%]  "
             >
 
-                {data.slice(0,10).map((item, key) => (
+                {data.slice(0, 10).map((item, key) => (
 
                     <SwiperSlide key={key} className="rounded-2xl !w-[250px] sm:!w-[400px]">
                         <div className="relative group h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] flex gap-[20px] rounded-2xl">
                             <div className="absolute flex justify-between mt-[20px] p-[10px] w-[100%]">
                                 <span className="bg-red-500 p-[8px] rounded-2xl">-20%</span>
-                                <CiHeart className="text-white size-[40px]" />
+
+                                {
+                                    WishListData.some(wish => wish.id === item.id) ? (
+                                        <FaHeart
+                                            onClick={() => dispatch(heartsFunc(item))}
+                                            className="text-red-500 size-[40px]"
+                                        />
+                                    ) : (
+                                        <CiHeart
+                                            onClick={() => dispatch(heartsFunc(item))}
+                                            className="text-white size-[40px]"
+                                        />
+                                    )
+                                }
+
                             </div>
 
                             <img className="rounded-2xl w-full h-full object-cover" src={item.images} alt="Product" />
-                            <span className="opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center bg-black text-white px-4 py-2 transition-opacity duration-300">
-                                Add To Cart
-                            </span>
+                           <CartButton item={item} />
                         </div>
 
                         <span className="flex flex-col gap-5">

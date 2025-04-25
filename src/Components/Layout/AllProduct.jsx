@@ -9,13 +9,10 @@ const AllProduct = () => {
     const { section } = useParams();
     const { data, loading, error, } = useSelector((state) => state.fetchState)
     const filteredData = data.filter(item => 
-        item.category?.slug.toLowerCase() === section.toLowerCase()
+        item.category?.toLowerCase() === section.toLowerCase()
       )
       
-
-      console.log(data);
-      
-
+    
     return (
 
         <>
@@ -27,7 +24,7 @@ const AllProduct = () => {
                 <div className='flex justify-evenly gap-6 flex-wrap'>
                     {filteredData.map(item => (
                         <div key={item.id} className=' rounded-xl shadow-lg w-[250px] gap-2.5 flex flex-col p-2'>
-                            <img className='h-[250px]' src={item.images} alt={item.name} />
+                            <img className='h-[250px]' src={item.images[0]} alt={item.name} />
                             
                             <p>${item.price}</p>
                             <p>${item.title}</p>

@@ -81,7 +81,7 @@ const Main = () => {
 
 
         <div className=' flex flex-col items-center justify-center'>
-          <Link to="/AllProducts/clothes" className='flex flex-col items-center justify-center'>
+          <Link to="/AllProducts/beauty" className='flex flex-col items-center justify-center'>
           <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
           </Link>
           <div className='border-b border-gray-300 h-[1px] w-full mt-[60px]  mr-auto'></div>

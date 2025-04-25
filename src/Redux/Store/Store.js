@@ -1,14 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { counterSlice } from "../CreateSlice/Counterslice";
+import counterSlice from "../CreateSlice/Counterslice";
 import  AuthSlice  from "../CreateSlice/AuthSlice";
 import  fetchDataSlice  from "../CreateSlice/FetchDataSlice";
-
+import  WishList  from "../CreateSlice/WishList";
+import cartSlice from "../CreateSlice/CartSlice";
 
  export const store = configureStore({
     reducer:{
-        /* allState:counterSlice, */
+
+        cartState: cartSlice,
+        count:counterSlice, 
         regState:AuthSlice,
-        fetchState:fetchDataSlice
+        fetchState:fetchDataSlice,
+        wishState:WishList
    
 
     }
