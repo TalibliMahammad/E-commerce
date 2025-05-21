@@ -10,12 +10,9 @@ import { addItem, removeItem } from '../../Redux/CreateSlice/CartSlice'
 
 const CartPage = () => {
     const DataCart = useSelector((state) => state.cartState.items)
-
-
     const dispatch = useDispatch()
-
     const subtotal = DataCart.reduce((acc, item) => acc + (item.totalPrice || 0), 0);
-    const shipping = 20; // istəsəniz dəyişə bilərsiniz
+    const shipping = 20; 
     const total = subtotal + shipping;
     
 
@@ -55,8 +52,10 @@ const CartPage = () => {
                                     onClick={() => dispatch(addItem(item))}
                                     className=' text-2xl  bg-stone-300 text-black p-2'
                                 >
+                                
                                     +
                                 </button>
+
                             </span>
                             <span>{typeof item.totalPrice === 'number' ? item.totalPrice.toFixed(2) : '0.00'}$</span>
                         </div>
@@ -74,10 +73,7 @@ const CartPage = () => {
                             <input className='h-full w-[50%] outline-none border pl-4 ' placeholder='Enter The Coupon' type="text" />
                             <div className='bg-red-400 h-[70px] w-[200px] flex items-center rounded-2xl text-white justify-center'>Apply Coupon</div>
                         </div>
-
-
                     </div>
-
 
                     <div className='flex gap-5  flex-col r  items-end'>
                         <div className=' h-[60px] w-[200px]  flex justify-center  border   items-center'>Update Cart</div>

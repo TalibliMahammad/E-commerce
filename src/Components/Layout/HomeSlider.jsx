@@ -13,21 +13,20 @@ import { Pagination } from 'swiper/modules';
 import { useSelector } from 'react-redux';
 
 export default function HomeSlider() {
-  const { data } = useSelector((state) => state.fetchState);
-
+ const Laptops = useSelector(state => state.fetchState.data.Electronics?.Laptop) || []
   return (
     <>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-        {
+         {
 
-        data.slice(0,10).map((item,key)=>(
+        Laptops.slice(0,10).map((item,key)=>(
 
-          <SwiperSlide className='bg-stone-200' key={key}><img    className=' h-full w-full object-contain  bg-center '  src={item.images} alt="" /></SwiperSlide>
+          <SwiperSlide  key={key}><img className=' h-full w-full object-contain  bg-center '  src={item.images[0]} alt="" /></SwiperSlide>
 
           
         ))
 
-        }
+        } 
        
        
       </Swiper>

@@ -1,5 +1,4 @@
 import React from 'react'
-import image1 from '../../assets/apple-iphone-13-promotion-display.png'
 import { CiHeart } from 'react-icons/ci'
 import useSelection from 'antd/es/table/hooks/useSelection'
 import { useSelector } from 'react-redux'
@@ -9,7 +8,8 @@ import CartButton from './CartButton'
 
 const OurProducts = () => {
 
-    const { data } = useSelector(state => state.fetchState)
+    const woman = useSelector(state => state.fetchState.data.Woman) || []
+
 
 
 
@@ -28,7 +28,7 @@ const OurProducts = () => {
 
                 <div className='text-[20px] lg:text-[30px]  mt-10 flex flex-col md:flex-row  items-center md:justify-between  w-full  gap-4   md:gap-20 font-bold  '>
                     <span>
-                        Explore Our Products
+                        Woman Clothes
                     </span>
 
 
@@ -39,8 +39,8 @@ const OurProducts = () => {
             <div className='flex flex-wrap justify-evenly  gap-10  lg:px-15 '>
 
                 {
-                    data.map((item, key) => (
-                        <div key={key} className="flex flex-col items-center gap-5">
+                    Object.values(woman).flat().map((item, key) => (
+                      <div key={key} className="flex flex-col items-center gap-5">
 
                             <div className="relative group h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] flex gap-[20px] rounded-2xl">
                                 <div className="absolute flex justify-between mt-[20px] p-[10px] w-full">
@@ -49,12 +49,12 @@ const OurProducts = () => {
                                 </div>
 
                                 <img
-                                    className="rounded-2xl w-full h-full object-cover"
+                                    className="h-full w-full object-contain p-5 bg-center rounded-2xl border-1"
                                     src={item.images?.[0] || "https://via.placeholder.com/300"}
                                     alt="Product"
                                 />
 
-                                <CartButton item={item}/>
+                                <CartButton item={item} />
                             </div>
 
                             <span className="flex flex-col items-center gap-2">
@@ -74,7 +74,7 @@ const OurProducts = () => {
             </div>
 
 
-            <Link to="/AllProducts/groceries" className='flex flex-col items-center justify-center'>
+            <Link to="/AllProducts/Woman" className='flex flex-col items-center justify-center'>
                 <div className='flex justify-center  flex-col md:mr-[80px] '>
                     <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
                 </div>

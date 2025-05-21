@@ -1,8 +1,5 @@
 import React from 'react'
-import image1 from './../../assets/Ekran şəkli 2025-03-31 234106.png'
-import image2 from './../../assets/Ekran şəkli 2025-03-31 234122.png'
-import image3 from './../../assets/Ekran şəkli 2025-03-31 234142.png'
-import image4 from './../../assets/Ekran şəkli 2025-03-31 234153.png'
+
 
 const FeaturedSection = () => {
     return (
@@ -28,17 +25,17 @@ const FeaturedSection = () => {
 
             <div className='flex lg:pl-21  flex-col lg:flex-row gap-10 mt-[100px] '>
                 <div className=' lg:w-[70%]'>
-                    <img className='  object-cover h-full w-full' src={image1} alt="" />
+                    <img className='  object-cover h-full w-full' src={""} alt="" />
                 </div>
                 <div className='flex flex-col  gap-10'>
 
                     <div className='flex lg:w-[93%]'>
-                        <img  className=' h-full w-full object-cover' src={image2} alt="" />
+                        <img  className=' h-full w-full object-cover' src={""} alt="" />
                     </div>
 
                     <div className='flex lg:w-[45.5%]   lg:justify-start gap-5 flex-col lg:flex-row'>
-                        <img className='  h-full w-full object-cover' src={image3} alt="" />
-                        <img className='object-cover  h-full w-full ' src={image4} alt="" />
+                        <img className='  h-full w-full object-cover' src={""} alt="" />
+                        <img className='object-cover  h-full w-full ' src={""} alt="" />
                     </div>
                 </div>
             </div>

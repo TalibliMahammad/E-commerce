@@ -35,9 +35,8 @@ const FormRegister = () => {
             onSubmit={(values, { setSubmitting }) => {
                 setLoader(true);
                 dispatch(handleRegister(values));
-                setShowDot(true); // 1. animasiyanı göstər
+                setShowDot(true); 
 
-                // 2. 3 saniyə sonra yönləndir
                 setTimeout(() => {
                     navigate("/login");
                 }, 3000);

@@ -1,6 +1,6 @@
 import React from 'react'
 import Footer from '../../Pages/Footer'
-import imageL from './../../assets/login.png'
+
 import { FaGoogle } from "react-icons/fa";
 import Header from './Header';
 import { Link } from 'react-router-dom';

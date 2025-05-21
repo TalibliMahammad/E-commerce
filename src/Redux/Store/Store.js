@@ -5,6 +5,7 @@ import  fetchDataSlice  from "../CreateSlice/FetchDataSlice";
 import  WishList  from "../CreateSlice/WishList";
 import cartSlice from "../CreateSlice/CartSlice";
 
+
  export const store = configureStore({
     reducer:{
 
@@ -12,7 +13,8 @@ import cartSlice from "../CreateSlice/CartSlice";
         count:counterSlice, 
         regState:AuthSlice,
         fetchState:fetchDataSlice,
-        wishState:WishList
+        wishState:WishList,
+ 
    
 
     }

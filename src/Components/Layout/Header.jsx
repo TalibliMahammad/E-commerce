@@ -22,11 +22,19 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
 
 
-  const { data } = useSelector((state => state.fetchState))
+  const { data, filtered } = useSelector((state => state.fetchState))
   const dispatch = useDispatch()
   const { WishListData } = useSelector((state) => state.wishState)
   const DataCart = useSelector((state) => state.cartState.items)
 
+
+  const [inputValue, setInputValue] = useState("")
+
+
+  const handleInput = (e) => {
+    setInputValue(e.target.value)
+    dispatch(filterData(e.target.value))
+  }
   return (
 
     <header>
@@ -54,6 +62,8 @@ const Header = () => {
             </li>
             <li>Product</li>
             <li>Contact</li>
+            <li>About Us</li>
+            <li>Our Services</li>
             {!loginData?.name && (
               <>
                 <li>
@@ -87,10 +97,37 @@ const Header = () => {
 
 
           <div className=' justify-between  items-center w-[40%] mr-10 hidden lg:flex  gap-3 '>
+            <div className='relative flex  gap-6'>
 
-            <div className='flex bg-stone-200 items-center h-[34px] lg:p-[15px] p-0  justify-between   rounded-[5px] '>
-              <input onChange={(e) => dispatch(filterData(e.target.value))} className='border-none focus:outline-none p-2  ' placeholder='What looking for..' type="text" />
-              <CiSearch className='md:text-[30px] text-[20px]' />
+              <div className='flex bg-stone-200 items-center h-[34px] lg:p-[15px] p-0  justify-between   rounded-[5px] '>
+                <input value={inputValue} onChange={(e) => handleInput(e)} className='border-none focus:outline-none p-2  ' placeholder='What looking for..' type="text" />
+                <CiSearch className='md:text-[30px] text-[20px]' />
+              </div>
+              {inputValue.trim() !== "" && filtered.length > 0 && (
+                <div className='absolute top-full mt-2 right-0 bg-stone-200 shadow-lg rounded-md text-black text-sm p-2 z-50 w-full'>
+                  {filtered.length > 0 ? (
+                    filtered.map((item, index) => (
+
+                      <div key={index} className="p-2 hover:bg-gray-100 cursor-pointer flex gap-2 items-center">
+                        < img src={item.images[0]} alt={item.title} className="w-10 h-10 object-cover" />
+                        <span>
+                          {item.title && `${item.title.slice(0, 30)} | `}
+                          {item.category && `${item.category} | `}
+                          {item.brand && `${item.brand} | `}
+                          {item.name}
+                        </span>
+                        <span>
+                          {item.price}$
+                        </span>
+
+                      </div>
+
+                    ))
+                  ) : (
+                    <div className="p-2 text-center">No results found</div>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className='hidden md:flex items-center text-[30px] gap-8 '>

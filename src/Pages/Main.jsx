@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import FlashSales from '../Components/Layout/FlashSales'
+import FlashSales from '../Components/Layout/Electronics'
 import CategoryBox from '../Components/Layout/CategoryBox'
 import BestSelling from '../Components/Layout/BestSelling'
 import PromotionSection from '../Components/Layout/PromotionSection'
@@ -10,23 +10,19 @@ import FeaturedSection from '../Components/Layout/FeaturedSection'
 import OurProducts from '../Components/Layout/OurProducts'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../Redux/CreateSlice/FetchDataSlice'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import Electronics from '../Components/Layout/Electronics'
 
 
 const Main = () => {
-
   const dispatch = useDispatch();
 
-
-
-  // Data yüklənəndə çağırırıq
+ const { mainCategory, subCategory } = useParams();
   useEffect(() => {
     dispatch(fetchProducts());
-  },[dispatch] )
+  }, [dispatch])
 
 
-
-  
   return (
     <>
 
@@ -40,7 +36,7 @@ const Main = () => {
 
           <div className='p-5 flex flex-col md:flex-row items-center  justify-between lg:justify-start   gap-5 lg:gap-20 font-bold  '>
             <span className=' text-[20px] md:text-[35px]'>
-              Flash Sales
+              Electronics
             </span>
 
             <div className='flex-col  bg-stone-100  p-3  flex '>
@@ -65,24 +61,14 @@ const Main = () => {
             </div>
           </div>
 
-
-
-
-
-
           <div className='  flex gap-5'>
-            <FlashSales />
-
+            <Electronics />
           </div>
         </div>
 
-
-
-
-
         <div className=' flex flex-col items-center justify-center'>
-          <Link to="/AllProducts/beauty" className='flex flex-col items-center justify-center'>
-          <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
+          <Link to={`/AllProducts/Electronics`}  className='flex flex-col items-center justify-center'>
+            <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
           </Link>
           <div className='border-b border-gray-300 h-[1px] w-full mt-[60px]  mr-auto'></div>
         </div>

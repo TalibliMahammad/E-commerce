@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import Footer from '../../Pages/Footer'
-import imageL from './../../assets/login.png'
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import FormRegister from './FormRegister';

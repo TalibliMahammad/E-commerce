@@ -6,6 +6,7 @@ import Signin from './Components/Layout/Signin'
 import WishList from './Pages/WishList'
 import Cart from './Pages/Cart'
 import AllProduct from './Components/Layout/AllProduct'
+import DetailPage from './Components/Layout/DetailPage'
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
     <Route path="/signin" element={<Signin />} />
     <Route path="/WishList" element={<WishList />} />
     <Route path="/Cart" element={<Cart/>} />
-    <Route path="/AllProducts/:section" element={<AllProduct/>} />
+    <Route  path="/AllProducts/:mainCategory" element={<AllProduct/>} />
+    <Route path="/DetailPage/:id" element={<DetailPage />} />
+    <Route path="*" element={<h1>404 Not Found</h1>} />
     </Routes>
     
        

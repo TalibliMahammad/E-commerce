@@ -1,5 +1,5 @@
 import React from 'react'
-import image1 from './../../assets/apple-iphone-13-promotion-display.png'
+
 import { CiHeart } from 'react-icons/ci'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ import CartButton from './CartButton'
 
 const BestSelling = () => {
 
-    const { data } = useSelector(state => state.fetchState)
+
 
 ;
 
@@ -43,7 +43,7 @@ const BestSelling = () => {
 
             <div className='flex  justify-center lg:justify-between px-17 flex-wrap   gap-10'>
 
-                {
+            {/*     {
                     data.slice(0, 10).map((item, key) => (
                         <div key={key} className="flex flex-col items-center gap-5">
 
@@ -69,7 +69,7 @@ const BestSelling = () => {
                             </span>
                         </div>
                     ))
-                }
+                } */}
 
 
 
