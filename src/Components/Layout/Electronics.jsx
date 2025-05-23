@@ -90,7 +90,7 @@ export default function Electronics() {
                 {threeArr?.slice(0, 30).map((item, key) => (
 
                     <SwiperSlide key={key} className="rounded-2xl !w-[250px] sm:!w-[400px]">
-                        <div onClick={() => navigate(`/DetailPage/${item.id}`)} className="relative group h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] flex gap-[20px] rounded-2xl">
+                        <div onClick={() =>navigate(`/DetailPage/${item.id}`)} className="relative group h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] flex gap-[20px] rounded-2xl">
                             <div className="absolute flex justify-between mt-[20px] p-[10px] w-[100%]">
                                 <span className="bg-red-500 p-[8px] rounded-2xl">-20%</span>
 
