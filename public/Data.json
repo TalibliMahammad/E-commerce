@@ -4616,7 +4616,7 @@
                 ]
             }
         ],
-        "Tshirt": [
+        "T-shirt": [
             {
                 "id": 176,
                 "price": 25,
@@ -5571,7 +5571,7 @@
         ]
     },
     "Woman": {
-        "SportShoes": [
+        "Sport-shoes": [
             {
                 "id": 213,
                 "price": 70,
@@ -6182,7 +6182,7 @@
                 ]
             }
         ],
-        "ClassicShoes": [
+        "Classic-shoes": [
             {
                 "id": 234,
                 "price": 90,
@@ -7419,7 +7419,7 @@
                 ]
             }
         ],
-        "Acc": [
+        "Accessories": [
             {
                 "id": 280,
                 "price": 120,

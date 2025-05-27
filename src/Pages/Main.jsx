@@ -12,12 +12,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../Redux/CreateSlice/FetchDataSlice'
 import { Link, useParams } from 'react-router-dom'
 import Electronics from '../Components/Layout/Electronics'
+import Timer from '../Components/Layout/Timer'
 
 
 const Main = () => {
   const dispatch = useDispatch();
 
- const { mainCategory, subCategory } = useParams();
+  const { mainCategory, subCategory } = useParams();
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch])
@@ -26,7 +27,7 @@ const Main = () => {
   return (
     <>
 
-      <div className='mt-[100px] flex flex-col gap-9 '>
+      <div className='mt-[100px] flex flex-col gap-9  '>
 
         <div className=' lg:pl-21 pt-5'>
           <div className='flex flex-col-reverse  lg:flex-row items-center  gap-0 lg:gap-[15px] font-bold'>
@@ -38,27 +39,7 @@ const Main = () => {
             <span className=' text-[20px] md:text-[35px]'>
               Electronics
             </span>
-
-            <div className='flex-col  bg-stone-100  p-3  flex '>
-
-              <div className='flex md:text-[15px] gap-[15px] md:gap-[10px]  items-end'>
-                <span>Days</span>
-                <span>Hours</span>
-                <span>Minutes</span>
-                <span>Seconds</span>
-              </div>
-
-              <div className='flex  pr-5 px-1 md:text-[15px]  justify-between   items-end'>
-                <h4>03</h4>
-                <span>:</span>
-                <h4>24</h4>
-                <span>:</span>
-                <h4>36 </h4>
-                <span>:</span>
-                <h4>48 </h4>
-              </div>
-
-            </div>
+            <Timer />
           </div>
 
           <div className='  flex gap-5'>
@@ -67,7 +48,7 @@ const Main = () => {
         </div>
 
         <div className=' flex flex-col items-center justify-center'>
-          <Link to={`/AllProducts/Electronics`}  className='flex flex-col items-center justify-center'>
+          <Link to={`/AllProducts/Electronics`} className='flex flex-col items-center justify-center'>
             <button className=' text-[20px] h-[50px] w-[200px] bg-red-400 text-white  hover:bg-black  transition duration-500 rounded-[10px]'>View All</button>
           </Link>
           <div className='border-b border-gray-300 h-[1px] w-full mt-[60px]  mr-auto'></div>

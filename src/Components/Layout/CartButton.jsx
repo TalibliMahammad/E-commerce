@@ -15,11 +15,13 @@ const CartButton = ({ item }) => {
   // Məhsul səbətdə varmı? (true/false)
   const isCart = cartItems.some(cartItem => cartItem.id === item.id);
 
-  const handleCart = () => {
+  const handleCart = (e) => {
     if (isCart) {
       dispatch(removeItem(item.id));
+          e.stopPropagation();
     } else {
       dispatch(addItem(item));
+          e.stopPropagation();
     }
   };
 
@@ -29,7 +31,7 @@ const CartButton = ({ item }) => {
         <div>
             <button
                 onClick={handleCart}
-                className={`opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center px-4 py-2 transition-opacity duration-300 ${isCart ? 'bg-red-500' : 'bg-black'} text-white`}
+                className={` group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center px-4 py-2 transition-opacity duration-300 ${isCart ? 'bg-red-500' : 'bg-black'} text-white`}
             >
                 {isCart ? 'Remove from Cart' : 'Add to Cart'}
             </button>

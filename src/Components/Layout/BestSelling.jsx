@@ -14,7 +14,7 @@ const BestSelling = () => {
 
     return (
 
-        <div className=' flex flex-col items-center gap-20 mt-[100px]'>
+        <div className='  flex flex-col items-center gap-20 mt-[100px]'>
 
 
             <div className=' md:pl-21 w-full flex flex-col'>

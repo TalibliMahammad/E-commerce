@@ -50,7 +50,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className='  border-b  border-gray-300 flex   justify-center focus:border-gray-400  rounded-md'>
+      <div className=' border-b  border-gray-300 flex   justify-center focus:border-gray-400  rounded-md'>
 
         <div className=' flex  w-[100%]  lg:w-[95%] gap-[20px] items-center    h-[100px]'>
 
@@ -58,7 +58,7 @@ const Header = () => {
 
           <ul className=' hidden lg:flex w-[100%] lg:justify-center gap-[50px] lg:items-center'>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>Product</li>
             <li>Contact</li>
@@ -141,7 +141,7 @@ const Header = () => {
               <div className='relative flex gap-6'>
                 <Link to="/cart">
                   <span className=' bg-orange-400  rounded-[20px] w-5 absolute text-[15px] bottom-4  flex  justify-center left-4'>{DataCart.length ? DataCart.length : ""} </span>
-                  <CiShoppingCart /></Link>
+                  <CiShoppingCart className='relative ' /></Link>
               </div>
               <div className='relative '>
 

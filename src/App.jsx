@@ -7,6 +7,7 @@ import WishList from './Pages/WishList'
 import Cart from './Pages/Cart'
 import AllProduct from './Components/Layout/AllProduct'
 import DetailPage from './Components/Layout/DetailPage'
+import CategoryProduct from './Components/Layout/categoryProduct'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     <Route path="/Cart" element={<Cart/>} />
     <Route  path="/AllProducts/:mainCategory" element={<AllProduct/>} />
     <Route path="/DetailPage/:id" element={<DetailPage />} />
+    <Route path="/category/:categoryKey/:subItem?" element={< CategoryProduct />} />
     <Route path="*" element={<h1>404 Not Found</h1>} />
     </Routes>
     
