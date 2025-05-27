@@ -30,7 +30,7 @@ const Header = () => {
 
   const [inputValue, setInputValue] = useState("")
 
-
+  
   const handleInput = (e) => {
     setInputValue(e.target.value)
     dispatch(filterData(e.target.value))
@@ -103,12 +103,13 @@ const Header = () => {
                 <input value={inputValue} onChange={(e) => handleInput(e)} className='border-none focus:outline-none p-2  ' placeholder='What looking for..' type="text" />
                 <CiSearch className='md:text-[30px] text-[20px]' />
               </div>
+
               {inputValue.trim() !== "" && filtered.length > 0 && (
                 <div className='absolute top-full mt-2 right-0 bg-stone-200 shadow-lg rounded-md text-black text-sm p-2 z-50 w-full'>
                   {filtered.length > 0 ? (
                     filtered.map((item, index) => (
 
-                      <div key={index} className="p-2 hover:bg-gray-100 cursor-pointer flex gap-2 items-center">
+                      <div key={index} onClick={() => navigate(`/DetailPage/${item.id}`)} className="p-2 hover:bg-gray-100 cursor-pointer flex gap-2 items-center">
                         < img src={item.images[0]} alt={item.title} className="w-10 h-10 object-cover" />
                         <span>
                           {item.title && `${item.title.slice(0, 30)} | `}

@@ -17,30 +17,30 @@ const DetailPage = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
 
- const allItems = useSelector((state) => state.fetchState.data) || [];
+    const allItems = useSelector((state) => state.fetchState.data) || [];
 
 
 
 
-const flatItems = Object.values(allItems)        // Electronics, Health, …
-  .flatMap(cat => Object.values(cat))           // Camera, Earbuds, …
-  .flat();
+    const flatItems = Object.values(allItems)        // Electronics, Health, …
+        .flatMap(cat => Object.values(cat))           // Camera, Earbuds, …
+        .flat();
 
-  const flatMap = flatItems.filter(item => item.id == id)
+    const flatMap = flatItems.filter(item => item.id == id)
     const [count, setCount] = React.useState(1);
-;
+    const [img, setImg] = React.useState(flatMap[0]?.images[0])
 
-    
-        const handleIncrement = () => {
-            setCount(count + 1);
-            dispatch(addItem(item));
-        };
-        const handleDecrement = () => {
-            if (count > 1) {
-                setCount(count - 1);
-                dispatch(removeItem(item.id));
-            }
-        };
+
+    const handleIncrement = () => {
+        setCount(count + 1);
+        dispatch(addItem(item));
+    };
+    const handleDecrement = () => {
+        if (count > 1) {
+            setCount(count - 1);
+            dispatch(removeItem(item.id));
+        }
+    };
 
     return (
         <>
@@ -49,13 +49,21 @@ const flatItems = Object.values(allItems)        // Electronics, Health, …
                 <div className='   justify-center flex flex-col items-center mt-[40px] not-only-of-type:pt-5'>
                     <div className='flex flex-col rounded-xl p-5 hover:bg-stone-100 transition-all duration-300 relative  lg:flex-row gap-10'>
                         <div className='flex gap-6'>
-                            <div className='flex flex-col gap-4'>
-                                <img className=' border-b h-[138px] w-[178px] object-cover' src={item.images[1]} alt="" />
-                                <img className=' border-b h-[138px] w-[178px] object-cover' src={item.images[2]} alt="" />
-                                <img className='border-b h-[138px] w-[178px] object-cover' src={item.images[3]} alt="" />
-                                <img className=' border-b h-[138px] w-[178px] object-cover' src={item.images[4]} alt="" />
+                            <div className='flex flex-col gap-4 object-contain'>
+                                {item.images.map((image, index) => (
+                                    <img
+                                        key={index}
+                                        className='h-[100px] w-[100px] object-contain cursor-pointer'
+                                        src={image}
+                                        onClick={() => setImg(item.images[index])}
+                                        alt={`Product ${index + 1}`}
+                                    />
+                                ))}
                             </div>
-                            <div><img className='h-[600px] w-[500px]' src={item.images[0]} alt="" /></div>
+                            <div>
+                                <img className='h-[600px] w-[500px] object-contain'
+
+                                    src={img} alt="" /></div>
                         </div>
                         <div className='    gap-5 flex flex-col'>
                             <h2 className='text-3xl font-bold'>{item.title}</h2>
@@ -64,7 +72,6 @@ const flatItems = Object.values(allItems)        // Electronics, Health, …
                                     <h3>*********</h3>
                                     <h3>{item.rating} </h3>
                                 </span>
-                                |
                                 <span>{item.stock}pieces</span>
                             </div>
                             <div className='w-[500px] flex flex-col gap-5  border-gray-300'>
@@ -133,7 +140,7 @@ const flatItems = Object.values(allItems)        // Electronics, Health, …
 
                     </div>
                 </div>
-            ))}  
+            ))}
             <Footer />
         </>
     );
