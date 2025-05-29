@@ -5,9 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const CategorySection = () => {
-
-
-
     const [activeMenu, setActiveMenu] = useState(false)
     const navigate = useNavigate()
 
@@ -15,9 +12,12 @@ const CategorySection = () => {
         setActiveMenu(prev => (prev == menuSection ? null : menuSection))
     }
     const handleCategory = (categoryKey, subItem) => {
-        const path = `/category/${categoryKey}/${subItem ? subItem.toLowerCase().replace(/\s+/g, '-') : ''}`;
+        const categoryPath = categoryKey.toLowerCase();
+        const subPath = subItem ? `/${subItem.toLowerCase().replace(/\s+/g, '-')}` : '';
+        const path = `/category/${categoryPath}${subPath}`;
         navigate(path);
     }
+
 
     const categories = [
         {
@@ -34,7 +34,32 @@ const CategorySection = () => {
             key: 'Electronics',
             title: 'Electronics',
             subItems: ['Laptop', 'Camera', 'Earbuds', 'Gaming', 'Phone', 'SmartWatch']
-        }
+        },
+        {
+            key: 'Home',
+            title: 'Home & Lifestyle',
+            subItems: ['Home','Lifestyle']
+        },
+        {
+            key: 'Sport',
+            title: 'Sports & Outdoor',
+            subItems: ['Sport',]
+        },
+        {
+            key: 'Baby&Toys',
+            title: 'Baby & Toys',
+            subItems: ['BabyToys',]
+        },
+        {
+            key: 'Pets',
+            title: 'Groceries & Pets',
+            subItems: ['Pets']
+        },
+        {
+            key: 'Health',
+            title: 'Health & Beauty',
+            subItems: ['Health', 'Beauty',]
+        },
     ]
 
     return (
@@ -63,7 +88,7 @@ const CategorySection = () => {
                                     `}
                                 >
                                     {category.subItems.map((item, index) => (
-                                        <li key={index} className="p-2 hover:bg-gray-100"   onClick={() => handleCategory(category.key, item)}>
+                                        <li key={index} className="p-2 hover:bg-gray-100" onClick={() => handleCategory(category.key, item)}>
                                             {item}
                                         </li>
                                     ))}
@@ -71,11 +96,6 @@ const CategorySection = () => {
                             </li>
                         ))}
 
-                        <li className='cursor-pointer'>Home & Lifestyle</li>
-                        <li className='cursor-pointer'>Sports & Outdoor</li>
-                        <li className='cursor-pointer'>Baby's & Toys</li>
-                        <li className='cursor-pointer'>Groceries & Pets</li>
-                        <li className='cursor-pointer'>Health & Beauty</li>
                     </ul>
 
 

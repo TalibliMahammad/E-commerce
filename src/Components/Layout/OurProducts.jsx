@@ -39,7 +39,7 @@ const OurProducts = () => {
             <div className='flex flex-wrap justify-evenly  gap-10  lg:px-15 '>
 
                 {
-                    Object.values(woman).flat().map((item, key) => (
+                    Object.values(woman).flat().slice(0, 5).map((item, key) => (
                       <div key={key} className="flex flex-col items-center gap-5">
 
                             <div className="relative group h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] flex gap-[20px] rounded-2xl">

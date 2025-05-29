@@ -2294,7 +2294,7 @@
         ]
     },
     "Health": {
-        "Products": [
+        "Health": [
             {
                 "id": 91,
                 "price": 50,
@@ -2678,8 +2678,8 @@
             }
         ]
     },
-    "HomeAndLifeStyle": {
-        "product": [
+    "Home": {
+        "Home": [
             {
                 "id": 105,
                 "price": 20,
@@ -3016,7 +3016,7 @@
         ]
     },
     "Pets": {
-        "product": [
+        "Pets": [
             {
                 "id": 117,
                 "price": 50,
@@ -3325,7 +3325,7 @@
         ]
     },
     "Sport": {
-        "product": [
+        "Sport": [
             {
                 "id": 128,
                 "price": 50,
