@@ -4,13 +4,14 @@ import Footer from '../../Pages/Footer'
 import { FaGoogle } from "react-icons/fa";
 import Header from './Header';
 import { Link } from 'react-router-dom';
+import imageL from './../../assets/3094352.jpg'
 import FormRegister from './FormRegister';
 
 const Signin = () => {
   return (
     <>
       <Header />
-      <div className='flex h-[90vh] pt-5 items-center '>
+      <div className='flex h-[100vh] pt-5 items-center '>
         <div className='h-full  w-[50%] flex items-center'>
           <img className='h-full w-full object-cover' src={imageL} alt="" />
         </div>

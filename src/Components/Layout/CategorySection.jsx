@@ -46,9 +46,9 @@ const CategorySection = () => {
             subItems: ['Sport',]
         },
         {
-            key: 'Baby&Toys',
+            key: 'Baby',
             title: 'Baby & Toys',
-            subItems: ['BabyToys',]
+            subItems: ['Baby',]
         },
         {
             key: 'Pets',

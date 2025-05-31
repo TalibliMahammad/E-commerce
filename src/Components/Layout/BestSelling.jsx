@@ -7,12 +7,7 @@ import CartButton from './CartButton'
 
 const BestSelling = () => {
 
-
-
-;
-
-
-    return (
+   /*  return (
 
         <div className='  flex flex-col items-center gap-20 mt-[100px]'>
 
@@ -43,7 +38,7 @@ const BestSelling = () => {
 
             <div className='flex  justify-center lg:justify-between px-17 flex-wrap   gap-10'>
 
-            {/*     {
+                {
                     data.slice(0, 10).map((item, key) => (
                         <div key={key} className="flex flex-col items-center gap-5">
 
@@ -69,7 +64,7 @@ const BestSelling = () => {
                             </span>
                         </div>
                     ))
-                } */}
+                } 
 
 
 
@@ -81,7 +76,7 @@ const BestSelling = () => {
 
         </div>
 
-    )
+    ) */
 
 
 }

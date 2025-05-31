@@ -26,7 +26,7 @@ export default function Electronics() {
     const { WishListData } = useSelector((state) => state.wishState)
     const navigate = useNavigate()
     const Laptops = useSelector(state => state.fetchState.data.Electronics?.Laptop) || []
-    const SmartWatch = useSelector(state => state.fetchState.data.Electronics?.SmartWatch.slice(0, 5)) || []
+    const SmartWatch = useSelector(state => state.fetchState.data.Electronics?.Smartwatch.slice(0, 5)) || []
     const phone = useSelector(state => state.fetchState.data.Electronics?.Phone.slice(0, 5)) || []
     const threeArr = [...Laptops, ...phone, ...SmartWatch]
     const [swiperRef, setSwiperRef] = useState(null);
