@@ -46,101 +46,100 @@ const DetailPage = () => {
         <>
             <Header />
             {flatMap.map(item => (
-                <div className='   justify-center flex flex-col items-center mt-[40px] not-only-of-type:pt-5'>
-                    <div className='flex flex-col rounded-xl p-5 hover:bg-stone-100 transition-all duration-300 relative  lg:flex-row gap-10'>
-                        <div className='flex gap-6'>
-                            <div className='flex flex-col gap-4 object-contain'>
-                                {item.images.map((image, index) => (
-                                    <img
-                                        key={index}
-                                        className='h-[100px] w-[100px] object-contain cursor-pointer'
-                                        src={image}
-                                        onClick={() => setImg(item.images[index])}
-                                        alt={`Product ${index + 1}`}
-                                    />
-                                ))}
-                            </div>
-                            <div>
-                                <img className='h-[600px] w-[500px] object-contain'
+  <section className="container mx-auto px-4 py-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      
+      {/* Left: Product Images */}
+      <div className="flex flex-col gap-4">
+        <div className="border rounded-xl p-4 bg-white shadow">
+          <img src={img} alt={item.title} className="w-full h-[500px] object-contain rounded-xl" />
+        </div>
+        <div className="flex gap-4 justify-center">
+          {item.images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              onClick={() => setImg(image)}
+              className="w-20 h-20 object-contain border rounded-md cursor-pointer hover:ring-2 hover:ring-red-400 transition"
+              alt={`Thumbnail ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
-                                    src={img} alt="" /></div>
-                        </div>
-                        <div className='    gap-5 flex flex-col'>
-                            <h2 className='text-3xl font-bold'>{item.title}</h2>
-                            <div className='flex gap-4'>
-                                <span className='flex gap-5'>
-                                    <h3>*********</h3>
-                                    <h3>{item.rating} </h3>
-                                </span>
-                                <span>{item.stock}pieces</span>
-                            </div>
-                            <div className='w-[500px] flex flex-col gap-5  border-gray-300'>
-                                <h3 className=' text-4xl'>{item.price}$</h3>
-                                <p className='flex flex-col gap-5'>
-                                    <div className='border-b-1 '>{item.description}</div>
-                                </p>
-                            </div>
+      {/* Right: Product Details */}
+      <div className="flex flex-col gap-6">
+        <h1 className="text-4xl font-bold text-gray-800">{item.title}</h1>
+        
+        <div className="flex items-center gap-6 text-gray-600">
+          <div className="flex items-center gap-2">
+            <span className="text-yellow-400">★</span>
+            <span>{item.rating}</span>
+          </div>
+          <span>{item.stock} in stock</span>
+        </div>
 
-                            <div className='flex flex-col gap-5'>
-                                <span className='flex gap-5'>
-                                    Colours:
-                                    <input className='bg-white' type="radio" name="Circle" id="" />
-                                    <input className='bg-black' type="radio" name="Circle" id="" />
-                                </span>
-                                <div className='flex gap-5 '>
-                                    <h3 className='cursor-pointer  hover:bg-red-400 hover:text-white transition-all duration-300 border rounded-[5px] p-2'>Xs</h3>
-                                    <h3 className='cursor-pointer  hover:bg-red-400 hover:text-white transition-all duration-300 border rounded-[5px] p-2'>Xs</h3>
-                                    <h3 className='cursor-pointer  hover:bg-red-400 hover:text-white transition-all duration-300 border rounded-[5px] p-2'>Xs</h3>
-                                </div>
-                            </div>
+        <p className="text-gray-600 text-lg leading-relaxed">{item.description}</p>
 
-                            <div className=' flex justify-between '>
+        <h2 className="text-3xl font-semibold text-red-500">${item.price}</h2>
 
-                                <span className='flex items-center rounded-[10px] gap-10 bg-stone-200 '>
-                                    <button
-                                        onClick={handleDecrement}
-                                        className=' rounded-[10px] text-2xl bg-stone-300 text-black h-full w-10 cursor-pointer  hover:bg-red-400 hover:text-white transition-all duration-300'
-                                    >
-                                        -
-                                    </button>
-                                    <span>{count}</span>
-                                    <button
-                                        onClick={handleIncrement}
-                                        className=' rounded-[10px] text-2xl bg-stone-300 text-black h-full w-10 cursor-pointer  hover:bg-red-400 hover:text-white transition-all duration-300 '
-                                    >
-                                        +
-                                    </button>
-                                </span>
+        {/* Only show sizes/colors if category is clothing */}
+        {item.category.toLowerCase().includes('clothing') && (
+          <>
+            <div>
+              <h3 className="font-semibold mb-2">Colors</h3>
+              <div className="flex gap-3">
+                <span className="w-6 h-6 rounded-full bg-black border cursor-pointer"></span>
+                <span className="w-6 h-6 rounded-full bg-red-500 border cursor-pointer"></span>
+              </div>
+            </div>
 
-                                <div className='cursor-pointer bg-red-400 text-white hover:bg-white hover:border-1  hover:text-black transition-all duration-300 relative h-15 rounded-2xl flex justify-center'>
-                                    <ToastContainer />
-                                    <button className='w-[180px]' type="submit">
-                                        Buy Now
-                                    </button>
+            <div>
+              <h3 className="font-semibold mb-2">Sizes</h3>
+              <div className="flex gap-3">
+                {['XS', 'S', 'M', 'L', 'XL'].map(size => (
+                  <button
+                    key={size}
+                    className="border px-4 py-1 rounded-md hover:bg-red-500 hover:text-white transition"
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
 
-                                </div>
-                            </div>
+        {/* Quantity and Buy Now */}
+        <div className="flex flex-col gap-4 mt-4">
+          <div className="flex items-center gap-4">
+            <button onClick={handleDecrement} className="px-4 py-2 bg-gray-200 rounded hover:bg-red-400 hover:text-white transition">-</button>
+            <span className="text-xl">{count}</span>
+            <button onClick={handleIncrement} className="px-4 py-2 bg-gray-200 rounded hover:bg-red-400 hover:text-white transition">+</button>
+          </div>
+          <button className="w-full bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 transition text-lg">
+            Buy Now
+          </button>
+        </div>
 
-                            <div className=' border  flex-col flex gap-5 justify-center rounded-2xl p-5'>
-                                <h3 className='text-2xl font-bold'>Delivery</h3>
-                                <span className='flex gap-5 '>
-                                    <TbTruckDelivery className=' size-[40px] text-red-400' />
-                                    <h3>Free delivery on orders over $100</h3>
-                                </span>
-                                <span className='border-b'></span>
-                                <span className='flex gap-5'>
-                                    <GiReturnArrow className=' size-[40px] text-red-400' />
-                                    <h3>Free returns within 30 days</h3>
-                                </span>
-                            </div>
-
-                        </div>
-
+        {/* Delivery info */}
+        <div className="mt-8 border rounded-xl p-5 bg-gray-50 shadow-sm">
+          <h3 className="text-xl font-semibold mb-4">Delivery</h3>
+          <div className="flex items-center gap-3 mb-3">
+            <TbTruckDelivery className="text-red-500 text-2xl" />
+            <span>Free delivery on orders over $100</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <GiReturnArrow className="text-red-500 text-2xl" />
+            <span>Free returns within 30 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+))}
 
 
-                    </div>
-                </div>
-            ))}
             <Footer />
         </>
     );
