@@ -16,18 +16,17 @@ const Header = () => {
 
 
   const localData = JSON.parse(localStorage.getItem("regData"))
-  const loginData = JSON.parse(localStorage.getItem("LoginUser"))
+  const logData = JSON.parse(localStorage.getItem("logData"))
   const navigate = useNavigate()
   const [isHover, setIsHover] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-
 
   const { data, filtered } = useSelector((state => state.fetchState))
   const dispatch = useDispatch()
   const { WishListData } = useSelector((state) => state.wishState)
   const DataCart = useSelector((state) => state.cartState.items)
-
-
+  const { Register, Login } = useSelector((state) => state.regState);
+  
   const [inputValue, setInputValue] = useState("")
 
   
@@ -64,7 +63,7 @@ const Header = () => {
             <li>Contact</li>
             <li>About Us</li>
             <li>Our Services</li>
-            {!loginData?.name && (
+            {!logData?.name && (
               <>
                 <li>
                   <Link to="/login">Log in</Link>

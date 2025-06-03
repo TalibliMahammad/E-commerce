@@ -19,7 +19,7 @@ export const AuthSlice = createSlice({
   name: "Auth",
   initialState: {
     Register: JSON.parse(localStorage.getItem("regData")) || {},
-    Login: {},
+    Login:JSON.parse(localStorage.getItem("logData")) || {},
     GetData: [],
   },
   reducers: {
@@ -34,9 +34,9 @@ export const AuthSlice = createSlice({
     builder
       .addCase(handleLogin.fulfilled, (state, action) => {
         state.Login = action.payload;
+        localStorage.setItem("logData", JSON.stringify(action.payload));
       })
       .addCase(handleLogin.rejected, (state, action) => {
-        // rejected zamanı error message qayıdır
         console.error("Login failed:", action.payload);
       });
   },

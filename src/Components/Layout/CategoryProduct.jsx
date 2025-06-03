@@ -10,7 +10,7 @@ const categoryProduct = () => {
     const formatedCategoryKey = categoryKey[0].toUpperCase() + categoryKey.slice(1).toLowerCase()
     const formatedSubItem = subItem[0].toUpperCase() + subItem.slice(1).toLowerCase()
     const data = useSelector(state => state.fetchState.data?.[formatedCategoryKey][formatedSubItem]) || []
-console.log(formatedCategoryKey,formatedSubItem);
+
 
 
     return (

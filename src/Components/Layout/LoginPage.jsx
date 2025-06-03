@@ -10,26 +10,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
 import { MoonLoader, PulseLoader } from 'react-spinners';
 import imageL from './../../assets/3094352.jpg'
-import { object } from 'yup';
-import Password from 'antd/es/input/Password';
+import googleİcon from '../../assets/google.png'
 
 const LoginPage = () => {
 
     const { Register, Login } = useSelector((state) => state.regState);
-    console.log(Login);
-
-
-
 
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPass] = useState("")
     const navigate = useNavigate()
     const [touched, setTouched] = useState({});
+    const [loginError, setLoginError] = useState('');
     const [errors, setErrors] = useState({});
     const [submitAttempted, setSubmitAttempted] = useState(false);
-    
-    
     const [ShowDot, setShowDot] = useState(false)
 
 
@@ -60,36 +54,52 @@ const LoginPage = () => {
             toast.error('Password must be at least 6 characters');
 
         }
-
-        setErrors(newErrors);                // <-- MÜTLƏQ!
         return Object.keys(newErrors).length === 0;
 
     }
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setSubmitAttempted(true);
 
-  if (!validate()) {
-    return;
-  }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitAttempted(true);
 
-  setShowDot(true);
+        if (!validate()) {
+            return;
+        }
+        setShowDot(true);
+        try {
+            await dispatch(handleLogin({ email, password })).unwrap();
+            toast.success('Login success');
+            setTimeout(() => navigate('/'), 4000);
+        } catch {
+            toast.error('Wrong email or password');
+            setShowDot(false)
+            setLoginError('Wrong email or password')
+        } finally {
+            setTimeout(() => setShowDot(false), 4000);
+        }
+    };
 
-  try {
-    await dispatch(handleLogin({ email, password })).unwrap();
-    toast.success('Login success');
-    setTimeout(() => navigate('/'), 4000);
-  } catch {
-    toast.error('Wrong email or password');
-  } finally {
-    setTimeout(() => setShowDot(false), 4000);
-  }
-};
+    const validateField = (fieldName, value) => {
+        let error = '';
 
+        if (fieldName === 'email') {
+            if (!value.trim()) {
+                error = 'Email is required';
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                error = 'Invalid email address';
+            }
+        }
 
-    console.log(ShowDot);
+        if (fieldName === 'password') {
+            if (!value.trim()) {
+                error = 'Password is required';
+            } else if (value.length < 6) {
+                error = 'Password must be at least 6 characters';
+            }
+        }
 
-
+        setErrors(prev => ({ ...prev, [fieldName]: error }));
+    };
 
     return (
         <>
@@ -104,48 +114,84 @@ const handleSubmit = async (e) => {
                 <div className='h-full  w-[50%] flex items-center'>
                     <img className='h-full w-full object-cover' src={imageL} alt="" />
                 </div>
-
                 <div className=' w-[50%] flex justify-evenly flex-col items-center'>
 
                     <form onSubmit={handleSubmit} className='flex justify-evenly h-[70vh] w-[50%] flex-col bg-white  '>
                         <div className='  text-left'>
                             <h2 className='text-[30px] '>Welcome here Log in and enjoy the shopping</h2>
                             <h4 className='text-[12px]'>Enter your Details below</h4>
+                            <div className='flex justify-center  font-serif text-xl text-red-500 p-10'>{loginError}</div>
+
                         </div>
 
                         <div className='  flex  flex-col gap-10'>
 
                             <input
-                                placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email}
-                                onBlur={() => setTouched({ ...touched, email: true })}
-                                className={`border-b p-2 rounded outline-none transition-all duration-300 ${(submitAttempted > 0 || touched.email) && errors.email ? 'border-red-500 text-red-500' : 'border-gray-400'
-                                    } focus:border-blue-500`}
+                                key={loginError} 
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                onBlur={() => {
+                                    setTouched(prev => ({ ...prev, email: true }));
+                                    validateField('email', email);
+                                }}
+                                className={`
+    border-b p-2 rounded outline-none transition-all duration-300
+    ${loginError === "Wrong email or password" || ((submitAttempted || touched.email) && errors.email)
+                                        ? "!border-red-500 !text-red-500 !placeholder-red-500"
+                                        : "border-gray-400 text-black placeholder-gray-400"
+                                    }
+    focus:border-blue-500
+  `}
                             />
 
-                            {submitAttempted && !email && (
-                                <div className="text-red-500 text-sm">Email is required</div>
+
+
+
+                            {(submitAttempted || touched.email) && errors.email && (
+                                <div className="text-red-500 text-sm">{errors.email}</div>
                             )}
 
 
-                            <input onChange={(e) => setPass(e.target.value)} type="password" value={password} placeholder='Password' className={`border-b p-2 rounded outline-none transition-all duration-300 ${(submitAttempted > 0 || touched.email) && errors.email ? 'border-red-500 text-red-500' : 'border-gray-400'
-                                } focus:border-blue-500`} />
-                            {submitAttempted && !password && (
-                                <div className="text-red-500 text-sm">Password is required</div>
+
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPass(e.target.value)}
+                                onBlur={() => {
+                                    setTouched(prev => ({ ...prev, password: true }));
+                                    validateField('password', password);
+                                }}
+                                className={`
+                                    border-b p-2 rounded outline-none transition-all duration-300
+                                    ${loginError === "Wrong email or password" || ((submitAttempted || touched.password) && errors.password)
+                                        ? "border-red-500 text-red-500 placeholder-red-500"
+                                        : "border-gray-400 text-black placeholder-gray-400"
+                                    }
+                                  focus:border-blue-500
+                                           `}
+                            />
+
+                            {(submitAttempted || touched.password) && errors.password && (
+                                <div className="text-red-500 text-sm">{errors.password}</div>
                             )}
                         </div>
 
 
-                        <div className=' bg-red-400  relative h-15 rounded-2xl text-white flex justify-center '>
+                        <div className=' bg-red-400   relative h-15 rounded-2xl text-white flex justify-center '>
                             <ToastContainer />
 
-                            <button className='   w-full' type="submit">
+                            <button className=' cursor-pointer   w-full' type="submit">
                                 Submit
                             </button>
                         </div>
-                        <div className='border-1 p-4 rounded-2xl flex items-center justify-center gap-5' >
-                            <FaGoogle className='text-[20px] text-red-500' />  <span>Log in With Google</span>
+                        <div className='border-1 p-4 rounded-2xl cursor-pointer flex items-center justify-center gap-5' >
+                            <img className='w-[20px] h-[20px]  ' src={googleİcon} alt="" />
+                            <span>Log in With Google</span>
                         </div>
-                        <span className='text-red-500 font-semibold'>Forget Password{' '}?</span>
+                        <span className='   cursor-pointer  text-red-500 font-semibold'>Forget Password{' '}?</span>
                     </form>
                     <div>
                         Dont  you have an account{' '}

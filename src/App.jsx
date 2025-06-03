@@ -9,6 +9,8 @@ import AllProduct from './Components/Layout/AllProduct'
 import DetailPage from './Components/Layout/DetailPage'
 import CategoryProduct from './Components/Layout/categoryProduct'
 
+import Categoryboxproduct from './Components/Layout/CategoryBoxProduct'
+
 
 function App() {
 
@@ -26,6 +28,7 @@ function App() {
     <Route  path="/AllProducts/:mainCategory" element={<AllProduct/>} />
     <Route path="/DetailPage/:id" element={<DetailPage />} />
     <Route path="/category/:categoryKey/:subItem?" element={< CategoryProduct />} />
+    <Route path="/:category/:categoryName?" element={< Categoryboxproduct />} />
     <Route path="*" element={<h1>404 Not Found</h1>} />
     </Routes>
     

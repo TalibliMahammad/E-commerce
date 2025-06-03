@@ -6,6 +6,7 @@ import Header from './Header';
 import { Link } from 'react-router-dom';
 import imageL from './../../assets/3094352.jpg'
 import FormRegister from './FormRegister';
+import googleIcon from '../../assets/google.png'
 
 const Signin = () => {
   return (
@@ -28,8 +29,8 @@ const Signin = () => {
             <div className='  flex  flex-col justify-between h-[350px] '>
               <FormRegister/>
             </div>
-            <div className='border-1 p-4 rounded-2xl flex items-center justify-center gap-5' >
-              <FaGoogle className='text-[20px] text-red-500' />  <span>Sign Up With Google</span> </div>
+            <div className='border-1 p-4 rounded-2xl cursor-pointer flex items-center justify-center gap-5' >
+             <img  className='h-[20px] w-[20px] ' src={googleIcon} alt="" /> <span>Sign Up With Google</span> </div>
           </div>
           <div>
             Do you have an account?{' '}
