@@ -28,8 +28,8 @@ const CartButton = ({ item }) => {
 
 
     return (
-        <div>
-            <button
+        <div className='relative'>
+            <button 
                 onClick={handleCart}
                 className={` group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center px-4 py-2 transition-opacity duration-300 ${isCart ? 'bg-red-500' : 'bg-black'} text-white`}
             >

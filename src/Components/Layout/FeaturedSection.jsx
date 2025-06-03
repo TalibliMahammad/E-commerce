@@ -23,19 +23,10 @@ const FeaturedSection = () => {
             </div>
 
 
-            <div className='flex lg:pl-21  flex-col lg:flex-row gap-10 mt-[100px] '>
-                <div className=' lg:w-[70%]'>
-                    <img className='  object-cover h-full w-full' src={""} alt="" />
-                </div>
-                <div className='flex flex-col  gap-10'>
-
-                    <div className='flex lg:w-[93%]'>
-                        <img  className=' h-full w-full object-cover' src={""} alt="" />
-                    </div>
-
-                    <div className='flex lg:w-[45.5%]   lg:justify-start gap-5 flex-col lg:flex-row'>
-                        <img className='  h-full w-full object-cover' src={""} alt="" />
-                        <img className='object-cover  h-full w-full ' src={""} alt="" />
+            <div className='flex   items-center justify-center lg:flex-row gap-10  '>
+                <div className='mt-[40px] flex justify-center  '>
+                    <div className=' w-[96%] flex justify-center'>
+                        <video className='' autoPlay loop muted src={'./SlidersImages/4727645-uhd_3840_2160_25fps.mp4'}></video>
                     </div>
                 </div>
             </div>

@@ -12,11 +12,11 @@ import { CiHeart } from "react-icons/ci";
 // import required modules
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { useDispatch, useSelector } from 'react-redux';
-import { heartsFunc } from '../../Redux/CreateSlice/WishList';
 import Cart from '../../Pages/Cart';
 import CartButton from './CartButton';
 import { addItem } from '../../Redux/CreateSlice/CartSlice';
 import { useNavigate } from 'react-router-dom';
+import HeartButton from './HeartButton';
 
 
 
@@ -69,84 +69,96 @@ export default function Electronics() {
 
 
 
-    ;
+  const getStars = (rating) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      <span key={i}>
+        {i <= rating ? '⭐' : '☆'}
+      </span>
+    );
+  }
+  
+
+  return stars;
+};
+console.log(threeArr);
 
 
     return (
         <>
-        {threeArr.length > 0 && (
-            <Swiper
-                loopAdditionalSlides={5}
-                onSwiper={setSwiperRef}
-                slidesPerView={3}
-                centeredSlides={true}
-                spaceBetween={30}
-                pagination={{
-                    type: 'fraction',
-                }}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false
-                }}
-                loop={true}
-                modules={[Pagination, Navigation, Autoplay]}
-                navigation={true}
-                className="mySwiper h-[70vh]  w-[100%]  "
-            >
+            {threeArr.length > 0 && (
+                <Swiper
+                    loopAdditionalSlides={5}
+                    onSwiper={setSwiperRef}
+                    slidesPerView={'auto'}
+                    centeredSlides={false}
+                    spaceBetween={20}
+                    pagination={{
+                        type: 'fraction',
+                    }}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false
+                    }}
+                    loop={5}
+                    modules={[Pagination, Navigation, Autoplay]}
+                    navigation={true}
+                    className="mySwiper h-[500px]"
+                >
 
-                {threeArr?.slice(0, 30).map((item, key) => (
+                    {threeArr?.slice(0, 30).map((item, key) => (
 
-                    <SwiperSlide key={item.id} className=" bg-stone-200 !h-[500px] border-1 border-stone-200 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; rounded-2xl !w-[250px] sm:!w-[400px]">
-                        <div onClick={() => navigate(`/DetailPage/${item.id}`)} className=" relative group h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] flex gap-[20px] ">
-                            <div className="absolute flex justify-between mt-[20px] p-[10px] w-[100%]">
-                                <span className="bg-red-500 p-[8px] rounded-2xl">-20%</span>
+                        <SwiperSlide key={item.id} className="!w-[300px] !flex !items-center !justify-center" >
+                            <div className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
 
-                                {
-                                    WishListData.some(wish => wish.id === item.id) ? (
-                                        <FaHeart
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                dispatch(heartsFunc(item));
-                                            }}
-                                            className="text-red-500 size-[40px]"
-                                        />
-                                    ) : (
-                                        <CiHeart
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                dispatch(heartsFunc(item));
-                                            }}
-                                            className="text-white size-[40px]"
-                                        />
-                                    )
-                                }
+                                <div
+                                    onClick={() => navigate(`/DetailPage/${item.id}`)}
+                                    className="relative h-[250px] w-full cursor-pointer"
+                                >
+                                    <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold  py-1 rounded-full z-10">
+                                        -20%
+                                    </div>
+
+                                    <div className="absolute top-2 right-2 z-10">
+                                        <HeartButton item={item} />
+                                    </div>
+
+                                    <img
+                                        className="h-full w-full object-contain p-5 transition-transform duration-300 group-hover:scale-105"
+                                        src={item.images[0].trim()}
+                                        alt="Product"
+                                    />
+
+
+                                    <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <CartButton item={item} />
+                                    </div>
+                                </div>
+
+                                {/* Text Content */}
+                                <div className="p-4 flex flex-col gap-1">
+                                    <h3 className="text-lg font-medium text-gray-800 truncate">{item.name}</h3>
+                                    <h3 className="text-sm text-gray-500 truncate">{item.title || "Product Title"}</h3>
+                                    <h3 className="text-base font-semibold text-green-600">
+                                        {item.price ? `${item.price}$` : "Price not available"}
+                                    </h3>
+                                    <div className="  cursor-pointer text-yellow-400 text-lg flex">
+                                        <span className='flex gap-1'>  
+
+                                      {item.rating} {getStars((item.rating || 0))}
+                                        </span>
+                                    </div>
+                                </div>
+
                             </div>
-
-                            <img
-                                key={key}
-                                className="h-full w-full object-contain p-5 bg-center rounded-2xl "
-                                src={item.images[0].trim()}
-                                alt="Product"
-                            />
+                        </SwiperSlide>
 
 
+                    ))}
 
-
-                            <CartButton item={item} />
-                        </div>
-
-                        <span className=" px-[16px] flex flex-col gap-5">
-                            <h3>{item.name}</h3>
-                            <h3>{item.title || "Product Title"}</h3>
-                            <h3>{item.price ? `${item.price}$` : "Price not available"}</h3>
-
-                        </span>
-                    </SwiperSlide>
-
-                ))}
-
-            </Swiper>
-        )}
+                </Swiper>
+            )}
         </>
     )
 

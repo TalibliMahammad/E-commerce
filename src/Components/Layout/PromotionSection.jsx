@@ -5,8 +5,8 @@ const PromotionSection = () => {
     return (
 
         <div className='mt-[100px] flex justify-center  '>
-            <div className='  md:h-[75vh] md:w-[91.1%] bg-red-500'>
-                <img   className='h-full w-full  object-cover'  alt="" />
+            <div className='  flex justify-center'>
+                <video className='w-[96%]' autoPlay loop muted src={'./SlidersImages/3917525-uhd_4096_2160_25fps.mp4'}></video>
             </div>
         </div>
     )

@@ -21,7 +21,7 @@ const CartPage = () => {
     return (
         <div  className=''>
             <Header />
-            <div className='  m-23 flex flex-col gap-10'>
+            <div className='  m-23 flex flex-col gap-10  bg-stone-100 '>
                 <h1 className='text-left text-3xl font-bold'>Shopping Cart({DataCart.length})</h1>
                 <div className='bg-stone-100 flex justify-around py-5 rounded-2xl'>
                     <span>Product</span>

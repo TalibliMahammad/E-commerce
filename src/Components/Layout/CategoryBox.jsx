@@ -27,7 +27,7 @@ const CategoryBox = () => {
 
                 <div className=' lg:pl-21 pt-5'>
                     <div className='flex flex-col-reverse text-[20px] lg:flex-row items-center  gap-0 lg:gap-[15px] font-bold'>
-                        <div className=' rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div> Categories
+                        <div className=' rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div> Electronics
                     </div>
                 </div>
 

@@ -11,6 +11,7 @@ import { CiUser } from "react-icons/ci";
 import useSelection from 'antd/es/table/hooks/useSelection';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterData } from '../../Redux/CreateSlice/FetchDataSlice';
+import UserMenu from './UserMenu';
 
 const Header = () => {
 
@@ -26,10 +27,10 @@ const Header = () => {
   const { WishListData } = useSelector((state) => state.wishState)
   const DataCart = useSelector((state) => state.cartState.items)
   const { Register, Login } = useSelector((state) => state.regState);
-  
+
   const [inputValue, setInputValue] = useState("")
 
-  
+
   const handleInput = (e) => {
     setInputValue(e.target.value)
     dispatch(filterData(e.target.value))
@@ -56,43 +57,152 @@ const Header = () => {
           <h1 className='lg:text-[35px] lg:ml-[45px]  text-[25px]'>Exclusive</h1>
 
           <ul className=' hidden lg:flex w-[100%] lg:justify-center gap-[50px] lg:items-center'>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>Product</li>
-            <li>Contact</li>
-            <li>About Us</li>
-            <li>Our Services</li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `relative pb-1 transition-all duration-300 ${isActive ? 'after:w-full text-red-500' : 'after:w-0 text-black'
+                } after:absolute after:left-0 after:bottom-0 after:h-[4px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full`
+              }
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/product"
+              className={({ isActive }) =>
+                `relative pb-1 transition-all duration-300 ${isActive ? 'after:w-full text-red-500' : 'after:w-0 text-black'
+                } after:absolute after:left-0 after:bottom-0 after:h-[4px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full`
+              }
+            >
+              Product
+            </NavLink>
+
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `relative pb-1 transition-all duration-300 ${isActive ? 'after:w-full text-red-500' : 'after:w-0 text-black'
+                } after:absolute   after:left-0 after:bottom-0 after:h-[4px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full`
+              }
+            >
+              Contact
+            </NavLink>
+            <NavLink
+              to="/aboutus"
+              className={({ isActive }) =>
+                `relative pb-1 transition-all duration-300 ${isActive ? 'after:w-full text-red-500' : 'after:w-0 text-black'
+                } after:absolute after:left-0 after:bottom-0 after:h-[4px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full`
+              }
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/ourservices"
+              className={({ isActive }) =>
+                `relative pb-1 transition-all duration-300 ${isActive ? 'after:w-full text-red-500' : 'after:w-0 text-black'
+                } after:absolute after:left-0 after:bottom-0 after:h-[4px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full`
+              }
+            >
+              Our Services
+            </NavLink>
             {!logData?.name && (
               <>
                 <li>
-                  <Link to="/login">Log in</Link>
+                  <Link
+                    to="/login"
+                    className="relative pb-1 text-black after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full"
+                  >
+                    Log in
+                  </Link>
+
                 </li>
-                <li>
-                  <Link to="/signin">Sign in</Link>
-                </li>
+                <Link
+                  to="/signin"
+                  className="relative pb-1 text-black after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full"
+                >
+                  Register
+                </Link>
+
               </>
             )}
 
 
           </ul>
 
-          {isOpen &&
-            <ul className='  md:flex z-10   absolute  left-0  top-[22.5vh]  bg-stone-300 flex  h-[75%]  w-[80%] lg:w-[40%] flex-col md:justify-around justify-between items-center  p-[15px]   '>
-              <div className='flex gap-5 justify-between w-[100%]'>
+{isOpen && (
+  <div className="fixed top-0 left-0 h-full w-[80%] md:w-[40%] bg-white z-50 shadow-lg flex flex-col justify-between p-6 rounded-r-2xl transition-transform duration-300">
+    
+   
+    <div className="flex justify-between items-center mb-8">
+      <CiHeart className="text-3xl text-gray-700 hover:text-red-500 cursor-pointer transition" />
+      <CiShoppingCart className="text-3xl text-gray-700 hover:text-blue-500 cursor-pointer transition" />
+    </div>
 
-                <CiHeart className='text-[30px]' />
-                <CiShoppingCart className='text-[30px]' />
-              </div>
-              <li className='ml-[40px] flex gap-1.5 items-center'>Category <MdKeyboardArrowRight className='text-[25px]' /></li>
-              <li>Home</li>
-              <li>Contact</li>
-              <li>About</li>
-              <span className='flex gap-5'>
-                <span className='bg-violet-600 h-[60px] w-[120px] justify-center flex items-center rounded-3xl text-white'>Sign Up</span>
-              </span>
-            </ul>
-          }
+    
+    <nav className="flex flex-col gap-5 text-[17px] font-medium text-gray-800">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          `transition-all duration-200 ${
+            isActive ? 'text-red-500 font-semibold' : 'hover:text-red-500'
+          }`
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Home
+      </NavLink>
+
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          `transition-all duration-200 ${
+            isActive ? 'text-red-500 font-semibold' : 'hover:text-red-500'
+          }`
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        Contact
+      </NavLink>
+
+      <NavLink
+        to="/aboutus"
+        className={({ isActive }) =>
+          `transition-all duration-200 ${
+            isActive ? 'text-red-500 font-semibold' : 'hover:text-red-500'
+          }`
+        }
+        onClick={() => setIsOpen(false)}
+      >
+        About Us
+      </NavLink>
+
+      <div className="flex items-center gap-2 cursor-pointer hover:text-red-500 transition">
+        Category <MdKeyboardArrowRight className="text-xl" />
+      </div>
+    </nav>
+
+    {/* Auth Buttons */}
+    {!logData?.name && (
+      <div className="flex flex-col gap-3 mt-10">
+        <Link
+          to="/login"
+          className="w-full text-center py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
+          onClick={() => setIsOpen(false)}
+        >
+          Log In
+        </Link>
+        <Link
+          to="/signin"
+          className="w-full text-center py-2 rounded-xl bg-violet-600 text-white hover:bg-violet-700 transition"
+          onClick={() => setIsOpen(false)}
+        >
+          Sign Up
+        </Link>
+      </div>
+    )}
+  </div>
+)}
+
+
 
 
           <div className=' justify-between  items-center w-[40%] mr-10 hidden lg:flex  gap-3 '>
@@ -151,21 +261,9 @@ const Header = () => {
                   </button>) : ("")}
 
 
-                {isHover && (
-                  <div className='absolute top-full mt-2 right-0 bg-white shadow-lg rounded-md text-black text-sm p-2 z-50 w-36'>
+                {isHover && <UserMenu  setIsHover={setIsHover} />
+                }
 
-                    <Link to="/profile" className='block px-3 py-1 hover:bg-gray-100'>Profile</Link>
-
-                    <button className='block px-3 py-1 hover:bg-gray-100 w-full text-left' onClick={() => {
-
-                      localStorage.removeItem('LoginUser');
-                      navigate("/login")
-
-                    }}>
-                      LogOut
-                    </button>
-                  </div>
-                )}
 
               </div>
 

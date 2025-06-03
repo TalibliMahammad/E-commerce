@@ -4,6 +4,7 @@ import useSelection from 'antd/es/table/hooks/useSelection'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CartButton from './CartButton'
+import HeartButton from './HeartButton'
 
 
 const OurProducts = () => {
@@ -13,7 +14,19 @@ const OurProducts = () => {
 
 
 
+ const getStars = (rating) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      <span key={i}>
+        {i <= rating ? '⭐' : '☆'}
+      </span>
+    );
+  }
+  
 
+  return stars;
+};
 
 
     return (
@@ -36,42 +49,54 @@ const OurProducts = () => {
                 </div>
             </div>
 
-            <div className='flex flex-wrap justify-evenly  gap-10  lg:px-15 '>
-
+            <div className='flex flex-wrap justify-evenly gap-10 lg:px-15'>
                 {
                     Object.values(woman).flat().slice(0, 5).map((item, key) => (
-                      <div key={key} className="flex flex-col items-center gap-5">
+                        <div
+                            key={key}
+                            className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative"
+                        >
+                            <div className="relative h-[250px] w-full cursor-pointer">
+                                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full z-10">
+                                    -20%
+                                </div>
 
-                            <div className="relative group h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] flex gap-[20px] rounded-2xl">
-                                <div className="absolute flex justify-between mt-[20px] p-[10px] w-full">
-                                    <span className="bg-red-500 p-[8px] rounded-2xl">-20%</span>
-                                    <CiHeart className="text-white size-[40px]" />
+                             
+                                <div className="absolute top-2 right-2 z-10">
+                                    <HeartButton item={item} />
                                 </div>
 
                                 <img
-                                    className="h-full w-full object-contain p-5 bg-center rounded-2xl border-1"
+                                    className="h-full w-full object-contain p-5 transition-transform duration-300 group-hover:scale-105"
                                     src={item.images?.[0] || "https://via.placeholder.com/300"}
-                                    alt="Product"
+                                    alt={item.title}
                                 />
 
-                                <CartButton item={item} />
+                                
+                                <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <CartButton item={item} />
+                                </div>
                             </div>
 
-                            <span className="flex flex-col items-center gap-2">
-                                <h3>{item.title || "Product Title"}</h3>
-                                <h3>{item.price ? `${item.price}$` : "Price not available"}</h3>
+                         
+                            <div className="p-4 flex flex-col gap-1 ">
+                                <h3 className="text-lg font-medium text-gray-500 truncate">{item.title.slice(0, 20) || "Product Title"}</h3>
+                                <h3 className="text-base font-semibold text-green-600">
+                                    {item.price ? `${item.price}$` : "Price not available"}
 
-                            </span>
+                                     <div className="  cursor-pointer text-yellow-400 text-lg flex">
+                                        <span className='flex gap-1'>  
+
+                                      {item.rating} {getStars((item.rating || 0))}
+                                        </span>
+                                    </div>
+                                </h3>
+                            </div>
                         </div>
                     ))
                 }
-
-
-
-
-
-
             </div>
+
 
 
             <Link to="/AllProducts/Woman" className='flex flex-col items-center justify-center'>
