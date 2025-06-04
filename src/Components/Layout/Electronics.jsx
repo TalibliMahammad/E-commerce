@@ -82,7 +82,7 @@ export default function Electronics() {
 
   return stars;
 };
-console.log(threeArr);
+
 
 
     return (
@@ -136,7 +136,7 @@ console.log(threeArr);
                                     </div>
                                 </div>
 
-                                {/* Text Content */}
+                               
                                 <div className="p-4 flex flex-col gap-1">
                                     <h3 className="text-lg font-medium text-gray-800 truncate">{item.name}</h3>
                                     <h3 className="text-sm text-gray-500 truncate">{item.title || "Product Title"}</h3>

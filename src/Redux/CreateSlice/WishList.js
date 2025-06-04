@@ -19,7 +19,7 @@ export const WishList = createSlice({
 
     reducers: {
         heartsFunc: (state, action) => {
-            const { id, images, title, price } = action.payload;
+            const { id, images, title, price, rating} = action.payload;
             const existingItem = state.WishListData.find((item) => item.id === id);
 
             if (existingItem) {
@@ -29,7 +29,7 @@ export const WishList = createSlice({
                 localStorage.setItem("WishListData", JSON.stringify(state.WishListData));
                 
             } else {
-                state.WishListData.push({ id, images, title, price });
+                state.WishListData.push({ id, images, title, price, rating });
                 state.ClickedHearts = true;
                 state.itemId = id;
                 localStorage.setItem("WishListData", JSON.stringify(state.WishListData));

@@ -117,8 +117,8 @@ const LoginPage = () => {
                 <div className=' w-[50%] flex justify-evenly flex-col items-center'>
 
                     <form onSubmit={handleSubmit} className='flex justify-evenly h-[70vh] w-[50%] flex-col bg-white  '>
-                        <div className='  text-left'>
-                            <h2 className='text-[30px] '>Welcome here Log in and enjoy the shopping</h2>
+                        <div className='  text-left  flex flex-col  gap-5 '>
+                            <h2 className='text-[30px] '>Welcome here  <span className='font-bold text-[35px]'>Log in</span> and enjoy the shopping</h2>
                             <h4 className='text-[12px]'>Enter your Details below</h4>
                             <div className='flex justify-center  font-serif text-xl text-red-500 p-10'>{loginError}</div>
 

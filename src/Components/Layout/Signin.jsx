@@ -21,7 +21,7 @@ const Signin = () => {
 
           
           <div className='flex justify-evenly h-[70vh] w-[50%] flex-col bg-white  '>
-            <div className='  text-left'>
+            <div className='  text-left   flex flex-col  gap-5 font-bold'>
               <h2 className='text-[30px] '>Create an Account</h2>
               <h4 className='text-[12px]'>Enter your Details below</h4>
             </div>

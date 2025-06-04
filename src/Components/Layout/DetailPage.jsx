@@ -49,7 +49,7 @@ const DetailPage = () => {
   <section className="container mx-auto px-4 py-10">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
       
-      {/* Left: Product Images */}
+     
       <div className="flex flex-col gap-4">
         <div className="border rounded-xl p-4 bg-white shadow">
           <img src={img} alt={item.title} className="w-full h-[500px] object-contain rounded-xl" />
@@ -67,7 +67,7 @@ const DetailPage = () => {
         </div>
       </div>
 
-      {/* Right: Product Details */}
+     
       <div className="flex flex-col gap-6">
         <h1 className="text-4xl font-bold text-gray-800">{item.title}</h1>
         
@@ -83,7 +83,7 @@ const DetailPage = () => {
 
         <h2 className="text-3xl font-semibold text-red-500">${item.price}</h2>
 
-        {/* Only show sizes/colors if category is clothing */}
+       
         {item.category.toLowerCase().includes('clothing') && (
           <>
             <div>
