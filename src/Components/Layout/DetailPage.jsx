@@ -110,7 +110,7 @@ const DetailPage = () => {
           </>
         )}
 
-        {/* Quantity and Buy Now */}
+       
         <div className="flex flex-col gap-4 mt-4">
           <div className="flex items-center gap-4">
             <button onClick={handleDecrement} className="px-4 py-2 bg-gray-200 rounded hover:bg-red-400 hover:text-white transition">-</button>
@@ -122,7 +122,7 @@ const DetailPage = () => {
           </button>
         </div>
 
-        {/* Delivery info */}
+      
         <div className="mt-8 border rounded-xl p-5 bg-gray-50 shadow-sm">
           <h3 className="text-xl font-semibold mb-4">Delivery</h3>
           <div className="flex items-center gap-3 mb-3">

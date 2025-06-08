@@ -13,8 +13,19 @@ const AllProduct = () => {
     const data = useSelector(state => state.fetchState.data?.[key]) || []
     const allItems = Object.values(data).flat(1)
 
+    const getStars = (rating) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <span key={i}>
+                    {i <= rating ? '⭐' : '☆'}
+                </span>
+            );
+        }
 
-    console.log(allItems);
+
+        return stars;
+    };
 
 
     return (
@@ -70,7 +81,12 @@ const AllProduct = () => {
                                 <h3 className="text-base font-semibold text-green-600">
                                     {item.price ? `${item.price}$` : "Price not available"}
                                 </h3>
+                                <div className="  cursor-pointer text-yellow-400 text-lg flex">
+                                    <span className='flex gap-1'>
 
+                                        {item.rating} {getStars((item.rating || 0))}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     ))}

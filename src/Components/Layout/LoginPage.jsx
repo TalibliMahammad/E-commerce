@@ -137,14 +137,14 @@ const LoginPage = () => {
                                     validateField('email', email);
                                 }}
                                 className={`
-    border-b p-2 rounded outline-none transition-all duration-300
-    ${loginError === "Wrong email or password" || ((submitAttempted || touched.email) && errors.email)
+                                     border-b p-2 rounded outline-none transition-all duration-300
+                                     ${loginError === "Wrong email or password" || ((submitAttempted || touched.email) && errors.email)
                                         ? "!border-red-500 !text-red-500 !placeholder-red-500"
                                         : "border-gray-400 text-black placeholder-gray-400"
                                     }
-    focus:border-blue-500
-  `}
-                            />
+                                            focus:border-blue-500
+                                              `}
+                                                   />
 
 
 
