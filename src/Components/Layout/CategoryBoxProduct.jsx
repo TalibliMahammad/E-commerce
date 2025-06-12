@@ -13,6 +13,9 @@ const Categoryboxproduct = () => {
 
     const data = useSelector((state => state.fetchState.data[category][categoryName]))
 
+    
+    console.log(categoryName);
+
     const getStars = (rating) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {

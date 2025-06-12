@@ -8,8 +8,11 @@ import Cart from './Pages/Cart'
 import AllProduct from './Components/Layout/AllProduct'
 import DetailPage from './Components/Layout/DetailPage'
 import CategoryProduct from './Components/Layout/categoryProduct'
-
 import Categoryboxproduct from './Components/Layout/CategoryBoxProduct'
+import ErrorPage from './Components/Layout/ErrorPage'
+import ContactUs from './Components/Layout/ContactUs'
+import PaymentSection from './Components/Layout/PaymentSection'
+import AboutUs from './Components/Layout/OurStory'
 
 
 function App() {
@@ -23,13 +26,16 @@ function App() {
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
     <Route path="/signin" element={<Signin />} />
+    <Route path="/ContactUs" element={<ContactUs />} />
+    <Route path="/AboutUs" element={<AboutUs />} />
     <Route path="/WishList" element={<WishList />} />
     <Route path="/Cart" element={<Cart/>} />
-    <Route  path="/AllProducts/:mainCategory" element={<AllProduct/>} />
+    <Route  path="/AllProducts/:mainCategory/:subCategory" element={<AllProduct/>} />
     <Route path="/DetailPage/:id" element={<DetailPage />} />
     <Route path="/category/:categoryKey/:subItem?" element={< CategoryProduct />} />
     <Route path="/:category/:categoryName?" element={< Categoryboxproduct />} />
-    <Route path="*" element={<h1>404 Not Found</h1>} />
+    <Route path="/Payment" element={< PaymentSection />} />
+    <Route path="/error" element={<ErrorPage/>} />
     </Routes>
     
        

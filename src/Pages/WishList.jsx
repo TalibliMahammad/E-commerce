@@ -3,11 +3,12 @@ import Header from '../Components/Layout/Header'
 import Footer from './Footer'
 import { CiHeart } from 'react-icons/ci'
 import { useDispatch, useSelector } from 'react-redux'
-import { heartsFunc } from '../Redux/CreateSlice/WishList'
+import { clearWishList, heartsFunc } from '../Redux/CreateSlice/WishList'
 import { FaHeart } from 'react-icons/fa'
 import CartButton from '../Components/Layout/CartButton'
 import wishEmpty from '/SlidersImages/emptyWish.mp4'
 import { Result } from 'antd'
+import { addItem } from '../Redux/CreateSlice/CartSlice'
 
 const WishList = () => {
     const dispatch = useDispatch()
@@ -16,27 +17,27 @@ const WishList = () => {
     const categoriesWishList = [...new Set(WishListData.map((item) => item.category))];
 
 
-   const flattenNestedData = (data, path = []) => {
-    const result = [];
+    const flattenNestedData = (data, path = []) => {
+        const result = [];
 
-    for (const key in data) {
-        const value = data[key];
+        for (const key in data) {
+            const value = data[key];
 
-        if (Array.isArray(value)) {
-            // Əgər dəyərlər array-dirsə, onları düzləşdir
-            const taggedItems = value.map(item => ({
-                ...item,
-                categories: [...path, key]
-            }));
-            result.push(...taggedItems);
-        } else if (typeof value === 'object' && value !== null) {
-            
-            result.push(...flattenNestedData(value, [...path, key]));
+            if (Array.isArray(value)) {
+                // Əgər dəyərlər array-dirsə, onları düzləşdir
+                const taggedItems = value.map(item => ({
+                    ...item,
+                    categories: [...path, key]
+                }));
+                result.push(...taggedItems);
+            } else if (typeof value === 'object' && value !== null) {
+
+                result.push(...flattenNestedData(value, [...path, key]));
+            }
         }
-    }
 
-    return result;
-};
+        return result;
+    };
 
 
 
@@ -51,7 +52,7 @@ const WishList = () => {
             !wishlistItemIds.includes(item.id) &&
             wishlistCategories.includes(item.category.trim().toLowerCase())
         );
-       
+
 
 
 
@@ -60,9 +61,6 @@ const WishList = () => {
 
 
     const recommendedItems = getRecommendedItems(WishListData, allProducts);;
-
-
-
 
     function getStars(rating) {
         const stars = []
@@ -80,6 +78,14 @@ const WishList = () => {
     }
 
 
+    const handleMoveToAllBag = () => {
+        WishListData.map((item) => {
+            dispatch(addItem(item))
+        })
+        dispatch(clearWishList())
+    }
+
+
 
 
 
@@ -90,13 +96,13 @@ const WishList = () => {
 
                 <div className='flex justify-between items-center  px-10 text-2xl'>
                     <div>WishList ({WishListData.length})</div>
-                    <div className='border rounded-2xl p-2 w-[250px] flex justify-center cursor-pointer hover:bg-red-400 hover:text-white transition-all'>Move All To Bag</div>
+                    <div  onClick={handleMoveToAllBag} className='border rounded-2xl p-2 w-[250px] flex justify-center cursor-pointer hover:bg-red-400 hover:text-white transition-all'>Move All To Bag</div>
                 </div>
 
                 <div className='flex flex-wrap justify-evenly mt-10 gap-10 lg:px-15'>
                     {
                         WishListData.length === 0 ? (
-                            <div className='flex items-center justify-center  h-[80vh] w-[100%]'>   <video className=' h-full w-full ' autoPlay loop muted src={wishEmpty} />  </div>
+                            <div className='flex items-center justify-center  h-[80vh] w-[100%]'>   <video className='  h-full w-full  ' autoPlay loop muted src={wishEmpty} />  </div>
 
                         ) : (
 
@@ -176,7 +182,7 @@ const WishList = () => {
 
                 <div className='flex justify-evenly mt-10 gap-10 flex-wrap px-20 mb-10'>
                     {recommendedItems.length > 0 ? (
-                        recommendedItems  .map(item => (
+                        recommendedItems.map(item => (
                             <div
                                 key={item.id}
                                 className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative"

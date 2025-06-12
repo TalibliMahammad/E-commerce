@@ -50,7 +50,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className=' border-b  border-gray-300 flex   justify-center focus:border-gray-400  rounded-md'>
+      <div className='  border-b  border-gray-300 flex   justify-center focus:border-gray-400  rounded-md'>
 
         <div className=' flex  w-[100%]  lg:w-[95%] gap-[20px] items-center    h-[100px]'>
 
@@ -78,7 +78,7 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-              to="/contact"
+              to="/ContactUs"
               className={({ isActive }) =>
                 `relative pb-1 transition-all duration-300 ${isActive ? 'after:w-full text-red-500' : 'after:w-0 text-black'
                 } after:absolute   after:left-0 after:bottom-0 after:h-[4px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full`
@@ -152,7 +152,7 @@ const Header = () => {
       </NavLink>
 
       <NavLink
-        to="/contact"
+        to="/ContactUs"
         className={({ isActive }) =>
           `transition-all duration-200 ${
             isActive ? 'text-red-500 font-semibold' : 'hover:text-red-500'
@@ -208,9 +208,15 @@ const Header = () => {
           <div className=' justify-between  items-center w-[40%] mr-10 hidden lg:flex  gap-3 '>
             <div className='relative flex  gap-6'>
 
-              <div className='flex bg-stone-200 items-center h-[34px] lg:p-[15px] p-0  justify-between   rounded-[5px] '>
-                <input value={inputValue} onChange={(e) => handleInput(e)} className='border-none focus:outline-none p-2  ' placeholder='What looking for..' type="text" />
-                <CiSearch className='md:text-[30px] text-[20px]' />
+              <div className="flex items-center border h-[34px] lg:p-[15px] p-0 bg-white rounded-full shadow-lg">
+                <input
+                  value={inputValue}
+                  onChange={(e) => handleInput(e)}
+                  className="w-full px-4 py-2 border-none focus:outline-none"
+                  placeholder="What looking for.."
+                  type="text"
+                />
+                <CiSearch className="text-[30px] md:text-[30px]" />
               </div>
 
               {inputValue.trim() !== "" && filtered.length > 0 && (

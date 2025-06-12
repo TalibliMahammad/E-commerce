@@ -5,7 +5,7 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 
 const FeaturedBottom = () => {
   return (
-    <div className="mt-[100px] flex justify-center gap-8 flex-wrap px-4">
+    <div className="my-[100px] flex justify-center gap-8 flex-wrap px-4">
       {[
         {
           icon: <TbTruckDelivery className="text-5xl text-indigo-600" />,

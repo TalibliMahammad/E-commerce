@@ -8,9 +8,10 @@ import CartButton from './CartButton'
 
 
 const AllProduct = () => {
-    const { mainCategory } = useParams()
+    const { mainCategory, subCategory } = useParams()
     const key = mainCategory[0].toUpperCase() + mainCategory.slice(1).toLowerCase();
-    const data = useSelector(state => state.fetchState.data?.[key]) || []
+    const key2 = subCategory[0].toUpperCase() + subCategory.slice(1).toLowerCase();
+    const data = useSelector(state => state.fetchState.data?.[key]?.[key2]) || []
     const allItems = Object.values(data).flat(1)
 
     const getStars = (rating) => {
@@ -26,15 +27,16 @@ const AllProduct = () => {
 
         return stars;
     };
-
+    
 
     return (
 
         <>
+        
             <Header />
             <div className='flex  mt-10 items-end ml-20 gap-5'>
                 <div className=' rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div>
-                <h1 className=' text-2xl font-bold  capitalize'>{key} Products</h1>
+                <h1 className=' text-2xl font-bold  capitalize'>{key2} Products</h1>
             </div>
 
             <div className='mt-24 px-4  flex justify-center flex-col items-center '>

@@ -65,7 +65,7 @@ const CategorySection = () => {
     return (
 
         <div>
-            <div className='  flex justify-center gap-4 '>
+            <div className=' flex justify-center gap-4 '>
                 <div className=' hidden lg:flex w-[15%] '>
 
                     <ul className='text-[17px] flex flex-col justify-evenly w-[80%]'>

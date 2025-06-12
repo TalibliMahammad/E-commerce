@@ -86,7 +86,7 @@ const CartPage = () => {
                     ))}
 
                     <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
-                        {/* Left Section */}
+                        
                         <div className="space-y-5">
                             <button onClick={() => navigate('/')} className="w-full py-4 bg-white border hover:bg-gray-100 rounded-xl font-semibold">
 
@@ -106,7 +106,7 @@ const CartPage = () => {
                             </div>
                         </div>
 
-                        {/* Right Section */}
+
                         <div className="bg-white p-6 rounded-2xl shadow space-y-4">
                             <h2 className="text-2xl font-bold border-b pb-2">Cart Totals</h2>
 
@@ -140,8 +140,8 @@ const CartPage = () => {
                     <h3 className="text-2xl font-bold text-red-500 animate-pulse">
                         Your Cart is Empty
                     </h3>
-            <div className='flex justify-center rounded-[5px] h-[70vh]'>
-                <video className='w-full h-full'  autoPlay loop muted  src={CartAnimation}></video>
+            <div className='flex justify-center py-10  h-[70vh]'>
+                <video className='w-full h-full rounded-[30px]'  autoPlay loop muted  src={CartAnimation}></video>
             </div>
                 </div>
             )}

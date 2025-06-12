@@ -9,10 +9,9 @@ const CartButton = ({ item }) => {
 
 
 
-  // localStorage'dan isCart vəziyyətini oxumaq
   const cartItems = useSelector(state => state.cartState.items) || [];
 
-  // Məhsul səbətdə varmı? (true/false)
+
   const isCart = cartItems.some(cartItem => cartItem.id === item.id);
 
   const handleCart = (e) => {
