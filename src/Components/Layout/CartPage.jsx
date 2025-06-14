@@ -6,6 +6,7 @@ import { addItem, removeItem } from '../../Redux/CreateSlice/CartSlice'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import CartAnimation from '/SlidersImages/CartAnimations.mp4'
+import { MdDelete } from "react-icons/md";
 
 
 
@@ -56,7 +57,7 @@ const CartPage = () => {
                         <div key={item.id} className="flex flex-col md:flex-row justify-between items-center bg-white rounded-xl shadow px-10 my-4 gap-4">
                             <div className="w-full md:w-[25%] flex items-center gap-4 ">
                                 <img src={item.image} alt={item.name} className="h-[80px] w-[60px] object-contain rounded" />
-                                <span className="font-medium text-gray-700">{item.name}</span>
+                                <span className="font-medium text-gray-700">{item.title}</span>
                             </div>
 
                             <span className="w-full md:w-[15%] text-center font-semibold text-gray-700">
@@ -79,8 +80,11 @@ const CartPage = () => {
                                 </button>
                             </div>
 
-                            <span className="w-full md:w-[15%] text-right font-semibold text-gray-800">
+                            <span className="w-full md:w-[15%] flex justify-end  items-center  gap-4 text-right font-semibold text-gray-800">
                                 {typeof item.totalPrice === 'number' ? item.totalPrice.toFixed(2) : '0.00'}$
+                                <span  onClick={() => dispatch(removeItem(item.id))}  className="bg-red-500 hover:bg-red-600 text-white hover:p-4 transition-all p-2 rounded-xl font-semibold flex items-center gap-2">
+                                  <MdDelete className='size-6' />
+                                </span>
                             </span>
                         </div>
                     ))}

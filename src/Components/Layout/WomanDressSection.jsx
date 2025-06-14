@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import HeartButton from './HeartButton'
 
-const WomanDressSection  = () => {
+const WomanDressSection = () => {
 
     const data = useSelector(state => state.fetchState.data.Woman?.Dress) || []
     const [swiperRef, setSwiperRef] = useState(null);
@@ -41,7 +41,7 @@ const WomanDressSection  = () => {
 
     return (
 
-        <div className='flex justify-center   lg:justify-between  mt-15 flex-wrap'>
+        <div className='flex justify-center items-center  lg:justify-between  mt-15 flex-wrap'>
 
             <div className=' w-full flex flex-col pl-21 items-end '>
 
@@ -116,12 +116,19 @@ const WomanDressSection  = () => {
                                         </span>
                                     </div>
                                 </div>
-
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
             )}
+
+            <Link to="/AllProducts/Woman/Dress" className="  w-full  mt-10 flex flex-col items-center justify-center">
+                <div className="flex justify-center  items-center flex-col md:mr-[80px]">
+                    <button className="text-[20px] h-[50px] w-[200px] bg-red-400 text-white hover:bg-black transition duration-500 rounded-[10px]">
+                        View All
+                    </button>
+                </div>
+            </Link>
 
         </div>
 

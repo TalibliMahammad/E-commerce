@@ -39,7 +39,7 @@ const AllProduct = () => {
                 <h1 className=' text-2xl font-bold  capitalize'>{key2} Products</h1>
             </div>
 
-            <div className='mt-24 px-4  flex justify-center flex-col items-center '>
+            <div className='mt-24 px-4  flex justify-center flex-col items-center mb-10 '>
 
                 <div className=' w-[80%] flex justify-evenly gap-6 flex-wrap'>
                     {allItems.map((item) => (

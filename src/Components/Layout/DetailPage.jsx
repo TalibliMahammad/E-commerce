@@ -11,6 +11,7 @@ import Login from '../../Pages/Login'
 import stripeimg from '/SlidersImages/stripe-svgrepo-com.svg'
 import { CiHeart } from 'react-icons/ci'
 import Rating from './rating'
+import CartButton from './CartButton'
 
 
 
@@ -61,29 +62,29 @@ const DetailPage = () => {
   };
 
 
-     const getRecommendedItems = (flatMap, flatItems) => {
-        const detailId = flatMap.map(item => item.id);
-        const detailCategories = flatMap.map(item => item.category.trim().toLowerCase());
+  const getRecommendedItems = (flatMap, flatItems) => {
+    const detailId = flatMap.map(item => item.id);
+    const detailCategories = flatMap.map(item => item.category.trim().toLowerCase());
 
-        const recommended = flatItems.filter(item =>
-            !detailId.includes(item.id) &&
-            detailCategories.includes(item.category.trim().toLowerCase())
-        );
-       
-
+    const recommended = flatItems.filter(item =>
+      !detailId.includes(item.id) &&
+      detailCategories.includes(item.category.trim().toLowerCase())
+    );
 
 
-        return recommended;
-    };
 
- const recommendedItems = getRecommendedItems(flatMap, flatItems);;
+
+    return recommended;
+  };
+
+  const recommendedItems = getRecommendedItems(flatMap, flatItems);;
 
   return (
-    <div>
+    <>
       <Header />
       {flatMap.map(item => (
 
-        <section className="container mx-auto px-4 py-10">
+        <section key={item.id} className="container mx-auto px-4 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
             <div className="flex flex-col gap-4">
@@ -153,14 +154,16 @@ const DetailPage = () => {
                   <button onClick={handleIncrement} className="px-4 py-2 bg-gray-200 rounded hover:bg-red-400 hover:text-white transition">+</button>
                 </div>
 
-                <div className="flex  gap-4 justify-between">
+                <div className="flex  gap-4 justify-between ">
                   <button className="w-[300px] bg-red-500 text-white py-3 rounded-xl hover:w-full transition-all hover:bg-red-600  text-lg">
                     Buy Now
                   </button>
-                  <button className="w-[300px] bg-red-500 text-white py-3 rounded-xl hover:w-full transition-all hover:bg-red-600   text-lg">
-                    Add to cart
-                  </button>
 
+
+
+                  <div className="w-[300px] bg-red-500  text-white py-3 rounded-xl hover:w-full transition-all hover:bg-red-600   text-lg">
+                    <CartButton item={item} />
+                  </div>
                 </div>
               </div>
 
@@ -289,128 +292,128 @@ const DetailPage = () => {
                   <p className="text-sm text-gray-400 mt-3">Your payment information is encrypted and protected by industry-leading security protocols.</p>
                 </div>
                 <div className=" bg-gray-700 text-white rounded-xl p-6 space-y-6 shadow-lg">
-                <h2 className="text-2xl font-bold flex items-center gap-2">👥 Ask a Question</h2>
-
-                
-                <form className="space-y-4">
-                  <div>
-                    <label className="block text-sm mb-1">Your Name</label>
-                    <input type="text" placeholder="e.g. John Doe" className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm mb-1">Your Question</label>
-                    <textarea rows="3" placeholder="Write your question here..." className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  </div>
-
-                  <button type="submit" className="bg-purple-600 hover:bg-purple-700 transition px-4 py-2 rounded text-white font-semibold">
-                    Submit Question
-                  </button>
-                </form>
+                  <h2 className="text-2xl font-bold flex items-center gap-2">👥 Ask a Question</h2>
 
 
-                <div className="border-t border-gray-700 pt-6 space-y-5">
-                  <div>
-                    <p className="font-semibold text-lg">❓ Alice asked:</p>
-                    <p className="text-gray-300 mb-2">Is this product waterproof?</p>
-                    <p className="text-green-400">✅ Yes, it has an IP68 rating which means it's fully waterproof up to 1.5 meters for 30 minutes.</p>
-                  </div>
+                  <form className="space-y-4">
+                    <div>
+                      <label className="block text-sm mb-1">Your Name</label>
+                      <input type="text" placeholder="e.g. John Doe" className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                    </div>
 
-                  <div>
-                    <p className="font-semibold text-lg">❓ David asked:</p>
-                    <p className="text-gray-300 mb-2">Does it support wireless charging?</p>
-                    <p className="text-green-400">✅ Absolutely! It supports fast wireless charging up to 15W.</p>
-                  </div>
+                    <div>
+                      <label className="block text-sm mb-1">Your Question</label>
+                      <textarea rows="3" placeholder="Write your question here..." className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                    </div>
 
-                  <div>
-                    <p className="font-semibold text-lg">❓ Mary asked:</p>
-                    <p className="text-gray-300 mb-2">Can I return it if I don’t like it?</p>
-                    <p className="text-green-400">✅ Yes, we offer a 14-day return policy, no questions asked.</p>
+                    <button type="submit" className="bg-purple-600 hover:bg-purple-700 transition px-4 py-2 rounded text-white font-semibold">
+                      Submit Question
+                    </button>
+                  </form>
+
+
+                  <div className="border-t border-gray-700 pt-6 space-y-5">
+                    <div>
+                      <p className="font-semibold text-lg">❓ Alice asked:</p>
+                      <p className="text-gray-300 mb-2">Is this product waterproof?</p>
+                      <p className="text-green-400">✅ Yes, it has an IP68 rating which means it's fully waterproof up to 1.5 meters for 30 minutes.</p>
+                    </div>
+
+                    <div>
+                      <p className="font-semibold text-lg">❓ David asked:</p>
+                      <p className="text-gray-300 mb-2">Does it support wireless charging?</p>
+                      <p className="text-green-400">✅ Absolutely! It supports fast wireless charging up to 15W.</p>
+                    </div>
+
+                    <div>
+                      <p className="font-semibold text-lg">❓ Mary asked:</p>
+                      <p className="text-gray-300 mb-2">Can I return it if I don’t like it?</p>
+                      <p className="text-green-400">✅ Yes, we offer a 14-day return policy, no questions asked.</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
-        </div>
-        
+
           <div className=' mt-10'>
-                        <div className='flex justify-between'>
-                            <div className='flex flex-col-reverse text-2xl lg:flex-row items-center w-full gap-0 lg:gap-[15px] font-bold'>
-                                <div className='rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div>
-                                Just Recommended
-                            </div>
-        
-                            <div className='text-2xl'>
-                                <div className='border rounded-2xl p-2 w-[250px] flex justify-center'>Move All To Bag</div>
-                            </div>
-                        </div>
-        
-                        <div className='flex justify-evenly mt-10 gap-10 flex-wrap px-20 mb-10'>
-                            {recommendedItems.length > 0 ? (
-                                recommendedItems  .map(item => (
-                                    <div
-                                        key={item.id}
-                                        className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative"
-                                    >
-                                        <div className="relative h-[250px] w-full cursor-pointer">
-                                            <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full z-10">
-                                                -20%
-                                            </div>
-        
-                                            <div className="absolute top-2 right-2 z-10">
-                                                <button
-                                                    onClick={() => handleWishlistToggle(item.id)}
-                                                    aria-label="Toggle Wishlist"
-                                                    className="text-white text-xl hover:text-red-500 transition-colors duration-300"
-                                                >
-                                                    <CiHeart />
-                                                </button>
-                                            </div>
-        
-                                            <img
-                                                className="h-full w-full object-contain p-5 transition-transform duration-300 group-hover:scale-105"
-                                                src={item.images?.[0] || "/default.jpg"}
-                                                alt={item.name || item.title}
-                                            />
-        
-                                            <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <button
-                                                    onClick={() => onAddToCart(item)}
-                                                    className="w-full bg-black text-white py-2 font-semibold hover:bg-gray-800 transition-colors duration-300"
-                                                >
-                                                    Add To Cart
-                                                </button>
-                                            </div>
-                                        </div>
-        
-                                        <div className="p-4 flex flex-col gap-1">
-                                            <h3 className="text-sm text-gray-500 truncate">{item.brand || item.category}</h3>
-                                            <h3 className="text-lg font-medium text-gray-800 truncate">{(item.title || item.name)?.slice(0, 20)}</h3>
-                                            <h3 className="text-base font-semibold text-green-600">{item.price} $</h3>
-                                            <div className="cursor-pointer text-yellow-400 text-lg flex">
-                                                <span className="flex gap-1">
-                                                    {item.rating} {getStars(item.rating || 0)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-xl text-gray-600">No recommendations available.</p>
-                            )}
-                        </div>
-        
+            <div className='flex justify-between'>
+              <div className='flex flex-col-reverse text-2xl lg:flex-row items-center w-full gap-0 lg:gap-[15px] font-bold'>
+                <div className='rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div>
+                Just Recommended
+              </div>
+
+              <div className='text-2xl'>
+                <div className='border rounded-2xl p-2 w-[250px] flex justify-center'>Move All To Bag</div>
+              </div>
+            </div>
+
+            <div className='flex justify-evenly mt-10 gap-10 flex-wrap px-20 mb-10'>
+              {recommendedItems.length > 0 ? (
+                recommendedItems.map(item => (
+                  <div
+                    key={item.id}
+                    className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative"
+                  >
+                    <div className="relative h-[250px] w-full cursor-pointer">
+                      <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full z-10">
+                        -20%
+                      </div>
+
+                      <div className="absolute top-2 right-2 z-10">
+                        <button
+                          onClick={() => handleWishlistToggle(item.id)}
+                          aria-label="Toggle Wishlist"
+                          className="text-white text-xl hover:text-red-500 transition-colors duration-300"
+                        >
+                          <CiHeart />
+                        </button>
+                      </div>
+
+                      <img
+                        className="h-full w-full object-contain p-5 transition-transform duration-300 group-hover:scale-105"
+                        src={item.images?.[0] || "/default.jpg"}
+                        alt={item.name || item.title}
+                      />
+
+                      <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button
+                          onClick={() => onAddToCart(item)}
+                          className="w-full bg-black text-white py-2 font-semibold hover:bg-gray-800 transition-colors duration-300"
+                        >
+                          Add To Cart
+                        </button>
+                      </div>
                     </div>
+
+                    <div className="p-4 flex flex-col gap-1">
+                      <h3 className="text-sm text-gray-500 truncate">{item.brand || item.category}</h3>
+                      <h3 className="text-lg font-medium text-gray-800 truncate">{(item.title || item.name)?.slice(0, 20)}</h3>
+                      <h3 className="text-base font-semibold text-green-600">{item.price} $</h3>
+                      <div className="cursor-pointer text-yellow-400 text-lg flex">
+                        <span className="flex gap-1">
+                          {item.rating} {getStars(item.rating || 0)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-xl text-gray-600">No recommendations available.</p>
+              )}
+            </div>
+
+          </div>
 
         </section>
 
-  ))
-}
+      ))
+      }
 
 
-<Footer />
-    </div >
+      <Footer />
+    </ >
   );
 }
 

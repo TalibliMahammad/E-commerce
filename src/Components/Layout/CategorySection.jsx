@@ -38,7 +38,7 @@ const CategorySection = () => {
         {
             key: 'Home',
             title: 'Home & Lifestyle',
-            subItems: ['Home','Lifestyle']
+            subItems: ['Home', 'Lifestyle']
         },
         {
             key: 'Sport',
@@ -69,32 +69,43 @@ const CategorySection = () => {
                 <div className=' hidden lg:flex w-[15%] '>
 
                     <ul className='text-[17px] flex flex-col justify-evenly w-[80%]'>
-                        {categories.map((category) => (
-                            <li key={category.key} className="relative cursor-pointer">
-                                <div className="flex items-center justify-between"
+                        {categories.map((category, index) => (
+                            <li key={category.key} className="relative">
+                                <div
+                                    className={`flex items-center justify-between ${index < 3 ? "cursor-pointer" : "cursor-pointer"}`}
                                     onClick={() => {
-                                        handleToggleMenu(category.key);
-                                    }} >
+                                        if (index < 3) {
+                                            handleToggleMenu(category.key);
+                                        } else {
+                                            handleCategory(category.key, category.subItems?.[0]);
+                                        }
+                                    }}
+                                >
                                     {category.title}
-                                    <MdKeyboardArrowRight
-                                        className={`text-[25px] transition-transform duration-300 ${activeMenu === category.key ? "rotate-90" : ""
-                                            }`}
-                                    />
+                                    {index < 3 && (
+                                        <MdKeyboardArrowRight
+                                            className={`text-[25px] transition-transform duration-300 ${activeMenu === category.key ? "rotate-90" : ""}`}
+                                        />
+                                    )}
                                 </div>
 
-                                <ul
-                                    className={`transition-all duration-300 overflow-hidden bg-stone-200 rounded-md z-10 mt-2
-                                     ${activeMenu === category.key ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
-                                    `}
-                                >
-                                    {category.subItems.map((item, index) => (
-                                        <li key={index} className="p-2 hover:bg-gray-100" onClick={() => handleCategory(category.key, item)}>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
+                                {index < 3 && (
+                                    <ul
+                                        className={`transition-all duration-300 overflow-hidden bg-stone-200 rounded-md z-10 mt-2
+                ${activeMenu === category.key ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+                `}
+                                    >
+                                        {category.subItems.map((item, subIndex) => (
+                                            <li key={subIndex} className="p-2 hover:bg-gray-100" onClick={() => handleCategory(category.key, item)}>
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
                         ))}
+
+
 
                     </ul>
 
