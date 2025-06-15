@@ -11,7 +11,14 @@ const Categoryboxproduct = () => {
 
     const { category, categoryName } = useParams()
 
-    const data = useSelector((state => state.fetchState.data[category][categoryName]))
+    const data = useSelector((state) => {
+        if (state.fetchState.data && 
+            state.fetchState.data[category] && 
+            state.fetchState.data[category][categoryName]) {
+            return state.fetchState.data[category][categoryName];
+        }
+        return [];
+    });
 
     
     console.log(categoryName);

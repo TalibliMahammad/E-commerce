@@ -160,7 +160,6 @@ const DetailPage = () => {
                   </button>
 
 
-
                   <div className="w-[300px] bg-red-500  text-white py-3 rounded-xl hover:w-full transition-all hover:bg-red-600   text-lg">
                     <CartButton item={item} />
                   </div>
