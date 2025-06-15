@@ -5,7 +5,7 @@ import Header from './Header'
 import Footer from './../../Pages/Footer'
 import CategorySection from './CategorySection'
 import HeartButton from './HeartButton'
-import CartButton from './CartButton' // Əgər daxil etməmisinizsə əlavə edin
+import CartButton from './CartButton' 
 
 const CategoryProduct = () => {
     const navigate = useNavigate()
@@ -28,7 +28,6 @@ const CategoryProduct = () => {
             <Header />
             <div>
                 <CategorySection />
-
                 <div className="flex justify-center items-center mb-10 ">
                     <div className="flex justify-center items-center flex-col mt-20 px-4 w-[96%]  ">
 
