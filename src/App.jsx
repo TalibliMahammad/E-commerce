@@ -7,11 +7,11 @@ import WishList from './Pages/WishList'
 import Cart from './Pages/Cart'
 import AllProduct from './Components/Layout/AllProduct'
 import DetailPage from './Components/Layout/DetailPage'
-import CategoryProduct from './Components/Layout/CategoryProduct'
+import CategoryProduct from './Components/Layout/CategoryProduct' 
 import Categoryboxproduct from './Components/Layout/CategoryBoxProduct'
 import ErrorPage from './Components/Layout/ErrorPage'
 import ContactUs from './Components/Layout/ContactUs'
-import PaymentSection from './Components/Layout/PaymentSection'
+import PaymentSection from './Components/Layout/PaymentSection' 
 import AboutUs from './Components/Layout/OurStory'
 
 
