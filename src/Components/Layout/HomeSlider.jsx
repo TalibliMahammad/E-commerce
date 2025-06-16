@@ -18,22 +18,20 @@ export default function HomeSlider() {
 
   const forPromotionImages = [
     "/Promo/1dad9da122a349a14f94094712946d3c.jpg",
+    "/Promo/lack-friday-sale-social-media-banner-design-template_47987-24589.jpg",
     "/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
-   /*  "/public/Promo/lack-friday-sale-social-media-banner-design-template_47987-24589.jpg",
-    "/public/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
-    "/public/Promo/7274f34d6a776f5d4208ef4a145a8b08.jpg",
-    "/public/Promo/a1fea360e3557739b3275c15e97b13ad.jpg",
-    "/public/Promo/b945d1c21541e8493c012de14750ec50.jpg",
-    "/public/Promo/e7f38e4bb49d0ac977970c38d92c012a.png",
-    "/public/Promo/e476a698096dfcfecdcdd0eba4e7b7ed.jpg",
-    "/public/Promo/1dad9da122a349a14f94094712946d3c.jpg",
-    "/public/Promo/guided_tour__dna6wcz8ieie_xlarge.jpg",
-    "/public/Promo/iphone__kqge21l9n26q_og.png",
-    "/public/Promo/lenovo-smart-ai.jpg",
-    "/public/Promo/modal_power__b0obhiao9aeq_large.jpg",
-    "/public/Promo/ora8hzqjeukmwnnb-0_0_desktop_0_1X.webp",
-    "/public/Promo/t9ygtye7iprqw6ei-0_0_desktop_0_1X.webp" */
-
+    "/Promo/7274f34d6a776f5d4208ef4a145a8b08.jpg",
+    "/Promo/a1fea360e3557739b3275c15e97b13ad.jpg",
+    "/Promo/b945d1c21541e8493c012de14750ec50.jpg",
+    "/Promo/e7f38e4bb49d0ac977970c38d92c012a.png",
+    "/Promo/e476a698096dfcfecdcdd0eba4e7b7ed.jpg",
+    "/Promo/1dad9da122a349a14f94094712946d3c.jpg",
+    "/Promo/guided_tour__dna6wcz8ieie_xlarge.jpg",
+    "/Promo/iphone__kqge21l9n26q_og.png",
+    "/Promo/lenovo-smart-ai.jpg",
+    "/Promo/modal_power__b0obhiao9aeq_large.jpg",
+    "/Promo/ora8hzqjeukmwnnb-0_0_desktop_0_1X.webp",
+    "/Promo/t9ygtye7iprqw6ei-0_0_desktop_0_1X.webp"
   ]
 
   
