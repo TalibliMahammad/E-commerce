@@ -17,8 +17,8 @@ export default function HomeSlider() {
   const Laptops = useSelector(state => state.fetchState.data.Electronics?.Laptop) || []
 
   const forPromotionImages = [
-    "/public/Promo/1dad9da122a349a14f94094712946d3c.jpg",
-    "/public/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
+    "/Promo/1dad9da122a349a14f94094712946d3c.jpg",
+    "/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
    /*  "/public/Promo/lack-friday-sale-social-media-banner-design-template_47987-24589.jpg",
     "/public/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
     "/public/Promo/7274f34d6a776f5d4208ef4a145a8b08.jpg",
