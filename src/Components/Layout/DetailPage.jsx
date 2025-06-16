@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 import Login from '../../Pages/Login'
 import stripeimg from '/SlidersImages/stripe-svgrepo-com.svg'
 import { CiHeart } from 'react-icons/ci'
-import Rating from './rating'
+import Rating from './Rating'
 import CartButton from './CartButton'
 
 
