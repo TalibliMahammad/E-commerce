@@ -12,7 +12,7 @@ import ErrorPage from './Components/Layout/ErrorPage'
 import ContactUs from './Components/Layout/ContactUs'
 import PaymentSection from './Components/Layout/PaymentSection' 
 import AboutUs from './Components/Layout/OurStory'
-import CategoryProduct from './Components/Layout/CategoryProduct'
+import CategoryProduct from '/src/Components/Layout/CategoryProduct'
 
 
 function App() {
