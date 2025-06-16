@@ -17,9 +17,8 @@ export default function HomeSlider() {
   const Laptops = useSelector(state => state.fetchState.data.Electronics?.Laptop) || []
 
   const forPromotionImages = [
-    "public/Promo/black-friday-big-sale-social-media-post-design-template_47987-25239.jpg",
-    "/public/Promo/cccadcdf-c2b7-403a-9fbe-34c62edc24ea.jpg",
-    "/public/Promo/lack-friday-sale-social-media-banner-design-template_47987-24589.jpg",
+    "/public/Promo/1dad9da122a349a14f94094712946d3c.jpg",
+   /*  "/public/Promo/lack-friday-sale-social-media-banner-design-template_47987-24589.jpg",
     "/public/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
     "/public/Promo/7274f34d6a776f5d4208ef4a145a8b08.jpg",
     "/public/Promo/a1fea360e3557739b3275c15e97b13ad.jpg",
@@ -32,7 +31,7 @@ export default function HomeSlider() {
     "/public/Promo/lenovo-smart-ai.jpg",
     "/public/Promo/modal_power__b0obhiao9aeq_large.jpg",
     "/public/Promo/ora8hzqjeukmwnnb-0_0_desktop_0_1X.webp",
-    "/public/Promo/t9ygtye7iprqw6ei-0_0_desktop_0_1X.webp"
+    "/public/Promo/t9ygtye7iprqw6ei-0_0_desktop_0_1X.webp" */
 
   ]
 
