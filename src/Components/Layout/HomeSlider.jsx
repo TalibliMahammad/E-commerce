@@ -35,6 +35,8 @@ export default function HomeSlider() {
     "/public/Promo/t9ygtye7iprqw6ei-0_0_desktop_0_1X.webp"
 
   ]
+
+  
   const {categoryKey , subItem } = useParams()
  
 
@@ -205,6 +207,9 @@ export default function HomeSlider() {
 
 
   }
+
+
+
 
 const mainKey = Object.keys(categoryImages).find(
   (k) => k.toLowerCase() === (categoryKey || "").toLowerCase()
