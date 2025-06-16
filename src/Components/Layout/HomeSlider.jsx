@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -18,7 +17,7 @@ export default function HomeSlider() {
   const Laptops = useSelector(state => state.fetchState.data.Electronics?.Laptop) || []
 
   const forPromotionImages = [
-    "/public/Promo/black-friday-big-sale-social-media-post-design-template_47987-25239.jpg",
+    "public/Promo/black-friday-big-sale-social-media-post-design-template_47987-25239.jpg",
     "/public/Promo/cccadcdf-c2b7-403a-9fbe-34c62edc24ea.jpg",
     "/public/Promo/lack-friday-sale-social-media-banner-design-template_47987-24589.jpg",
     "/public/Promo/2bdbe56056e0c75b6cf3938a6911141a.jpg",
