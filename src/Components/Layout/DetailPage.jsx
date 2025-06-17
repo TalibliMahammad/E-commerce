@@ -12,11 +12,12 @@ import stripeimg from '/SlidersImages/stripe-svgrepo-com.svg'
 import { CiHeart } from 'react-icons/ci'
 import Rating from './Rating'
 import CartButton from './CartButton'
+import { addItem, removeItem } from '../../Redux/CreateSlice/CartSlice'
 
 
 
 
-const DetailPage = () => {
+const DetailPage = ({ item, className }) => {
 
   const dispatch = useDispatch()
   const { id } = useParams()
@@ -33,6 +34,17 @@ const DetailPage = () => {
   const flatMap = flatItems.filter(item => item.id == id)
   const [count, setCount] = React.useState(1);
   const [img, setImg] = React.useState(flatMap[0]?.images[0])
+  const cartItems = useSelector(state => state.cartState.items) || [];
+  const isCart = cartItems.some(cartItem => cartItem.id === flatMap[0]?.id);
+
+  const handleCart = (e) => {
+    e.stopPropagation();
+    if (isCart) {
+      dispatch(removeItem(flatMap[0].id));
+    } else {
+      dispatch(addItem(flatMap[0]));
+    }
+  };
 
 
 
@@ -73,7 +85,6 @@ const DetailPage = () => {
 
 
 
-
     return recommended;
   };
 
@@ -84,6 +95,7 @@ const DetailPage = () => {
       <Header />
       {flatMap.map(item => (
 
+        <>
         <section key={item.id} className="container mx-auto px-4 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
@@ -98,8 +110,7 @@ const DetailPage = () => {
                     src={image}
                     onClick={() => setImg(image)}
                     className="w-20 h-20 object-contain border rounded-md cursor-pointer hover:ring-2 hover:ring-red-400 transition"
-                    alt={`Thumbnail ${index + 1}`}
-                  />
+                    alt={`Thumbnail ${index + 1}`} />
                 ))}
               </div>
             </div>
@@ -155,34 +166,40 @@ const DetailPage = () => {
                 </div>
 
                 <div className="flex  gap-4 justify-between ">
+
                   <button className="w-[300px] bg-red-500 text-white py-3 rounded-xl hover:w-full transition-all hover:bg-red-600  text-lg">
                     Buy Now
                   </button>
 
 
-                  <div className="w-[300px] bg-red-500  text-white py-3 rounded-xl hover:w-full transition-all hover:bg-red-600   text-lg">
-                    <CartButton item={item} />
-                  </div>
+                  <div className={`w-[300px] text-white py-3 rounded-xl hover:w-full transition-all text-lg ${isCart ? 'bg-black' : 'bg-red-500 hover:bg-red-600'}`}>
+
+                  <button
+                    onClick={handleCart}
+                    className={` group-hover:opacity-100  w-full text-center px-4 py-2 transition-opacity duration-300  text-white`}
+                  >
+                    {isCart ? 'Remove from Cart' : 'Add to Cart'}
+                  </button>
                 </div>
+
+
               </div>
+            </div>
 
 
-              <div className="mt-8 border rounded-xl p-5 bg-gray-50 shadow-sm">
-                <h3 className="text-xl font-semibold mb-4">Delivery</h3>
-                <div className="flex items-center gap-3 mb-3">
-                  <TbTruckDelivery className="text-red-500 text-2xl" />
-                  <span>Free delivery on orders over $100</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <GiReturnArrow className="text-red-500 text-2xl" />
-                  <span>Free returns within 30 days</span>
-                </div>
+            <div className="mt-8 border rounded-xl p-5 bg-gray-50 shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">Delivery</h3>
+              <div className="flex items-center gap-3 mb-3">
+                <TbTruckDelivery className="text-red-500 text-2xl" />
+                <span>Free delivery on orders over $100</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <GiReturnArrow className="text-red-500 text-2xl" />
+                <span>Free returns within 30 days</span>
               </div>
             </div>
           </div>
-
-
-          <div className=' w-full  '>
+        </div><div className=' w-full  '>
 
 
 
@@ -195,8 +212,7 @@ const DetailPage = () => {
                     key={index}
                     className="w-full h-120 object-contain rounded-xl shadow"
                     src={img}
-                    alt={`Product image ${index + 1}`}
-                  />
+                    alt={`Product image ${index + 1}`} />
                 ))}
               </div>
 
@@ -334,9 +350,7 @@ const DetailPage = () => {
 
               </div>
             </div>
-          </div>
-
-          <div className=' mt-10'>
+          </div><div className=' mt-10'>
             <div className='flex justify-between'>
               <div className='flex flex-col-reverse text-2xl lg:flex-row items-center w-full gap-0 lg:gap-[15px] font-bold'>
                 <div className='rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div>
@@ -373,8 +387,7 @@ const DetailPage = () => {
                       <img
                         className="h-full w-full object-contain p-5 transition-transform duration-300 group-hover:scale-105"
                         src={item.images?.[0] || "/default.jpg"}
-                        alt={item.name || item.title}
-                      />
+                        alt={item.name || item.title} />
 
                       <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <button
@@ -407,8 +420,9 @@ const DetailPage = () => {
 
         </section>
 
-      ))
-      }
+        </>
+      ))} 
+      
 
 
       <Footer />

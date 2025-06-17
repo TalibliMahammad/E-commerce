@@ -238,17 +238,10 @@ const mainKey = Object.keys(categoryImages).find(
         className="mySwiper shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] rounded-xl bg-stone-100"
       >
         {
-
           images.map((item, key) => (
-
             <SwiperSlide className='' key={key}><img className='p-2 h-full w-full object-contain  bg-center ' src={item} alt="" /></SwiperSlide>
-
-
           ))
-
         }
-
-
       </Swiper>
     </>
   );

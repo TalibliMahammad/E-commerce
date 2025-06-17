@@ -4,7 +4,7 @@ import { addItem, removeItem } from '../../Redux/CreateSlice/CartSlice'
 import DetailPage from './DetailPage';
 import { useNavigate } from 'react-router-dom';
 
-const CartButton = ({ item }) => {
+const CartButton = ({ item, className  }) => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -26,10 +26,10 @@ const CartButton = ({ item }) => {
 
   return (
     <>
-      <div className='relative'>
+      <div className={``}>
         <button
           onClick={handleCart}
-          className={` group-hover:opacity-100 absolute bottom-0 left-0 w-full text-center px-4 py-2 transition-opacity duration-300 ${isCart ? 'bg-black' : 'bg-red-500'} text-white`}
+          className={` group-hover:opacity-100  w-full text-center px-4 py-2 transition-opacity duration-300 ${isCart ? 'bg-black' : 'bg-red-500'} text-white ${className}`}
         >
           {isCart ? 'Remove from Cart' : 'Add to Cart'}
         </button>
