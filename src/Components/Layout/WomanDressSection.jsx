@@ -43,17 +43,13 @@ const WomanDressSection = () => {
 
         <div className='flex justify-center items-center  lg:justify-between  mt-15 flex-wrap'>
 
-            <div className=' w-full flex flex-col pl-21 items-end '>
-
-                <div className='flex flex-col-reverse  lg:flex-row  items-center  w-full  gap-0 lg:gap-[15px] font-bold'>
-                    <div className=' rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div> Woman Section
+            <div className="  px-5 lg:pl-21 flex flex-col gap-5 lg:gap-5">
+                <div className="flex flex-col-reverse lg:flex-row items-center gap-0 lg:gap-[15px] font-bold">
+                    <div className="rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]"></div> Woman
                 </div>
 
-
-                <div className='text-[20px]  lg:text-[30px]   mt-10 flex flex-col md:flex-row  items-center md:justify-between  w-full  gap-4   md:gap-20 font-bold  '>
-                    <span>
-                        Dress
-                    </span>
+                <div className="flex flex-col lg:flex-row items-center justify-between lg:justify-start gap-5 lg:gap-20 font-bold">
+                    <span className="text-[20px]   lg:text-[30px]">Dress</span>
                 </div>
             </div>
 
@@ -78,7 +74,7 @@ const WomanDressSection = () => {
                     className="mySwiper h-[500px]"
                 >
                     {data?.slice(0, 30).map((item, key) => (
-                        <SwiperSlide key={item.id} className="!w-[300px] !flex !items-center !justify-center ">
+                        <SwiperSlide key={item.id} className=" w-[200px] lg:max-w-[300px] !flex !items-center !justify-center ">
                             <div className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
 
                                 <div
@@ -122,13 +118,15 @@ const WomanDressSection = () => {
                 </Swiper>
             )}
 
-            <Link to="/AllProducts/Woman/Dress" className="  w-full  mt-10 flex flex-col items-center justify-center">
-                <div className="flex justify-center  items-center flex-col md:mr-[80px]">
+
+            <div className="flex w-full  flex-col justify-center mt-[60px] ">
+                <Link to={`/AllProducts/Woman/Dress`} className="flex  items-center  justify-center">
                     <button className="text-[20px] h-[50px] w-[200px] bg-red-400 text-white hover:bg-black transition duration-500 rounded-[10px]">
                         View All
                     </button>
-                </div>
-            </Link>
+                </Link>
+                <div className="border-b border-gray-300 h-[1px] w-full mt-[60px] mr-auto"></div>
+            </div>
 
         </div>
 

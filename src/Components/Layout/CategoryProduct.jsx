@@ -31,7 +31,7 @@ const CategoryProduct = () => {
                 <div className="flex justify-center items-center mb-10 ">
                     <div className="flex justify-center items-center flex-col mt-20 px-4 w-[96%]  ">
 
-                        <div className="flex flex-col-reverse lg:flex-row items-center w-full  pl-18 gap-2 font-bold mb-20">
+                        <div className="flex flex-col-reverse lg:flex-row items-center w-full xl:pl-18 gap-2 font-bold mb-20">
                             <div className="rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[20px]"></div>
                             <span className="text-lg lg:text-xl">You See {subItem.toUpperCase()} product's</span>
                         </div>

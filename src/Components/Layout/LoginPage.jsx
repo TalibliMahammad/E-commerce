@@ -110,99 +110,98 @@ const LoginPage = () => {
             )}
             <Header />
 
-            <div className='flex h-[100vh] pt-5 items-center '>
-                <div className='h-full  w-[50%] flex items-center'>
-                    <img className='h-full w-full object-cover' src={imageL} alt="" />
-                </div>
-                <div className=' w-[50%] flex justify-evenly flex-col items-center'>
+      <div className="flex flex-col md:flex-row h-auto md:h-[100vh] pt-5 items-center">
+  {/* Şəkil bölməsi */}
+  <div className="w-full md:w-1/2 h-64 md:h-full flex items-center">
+    <img className="h-full w-full object-cover" src={imageL} alt="Login illustration" />
+  </div>
 
-                    <form onSubmit={handleSubmit} className='flex justify-evenly h-[70vh] w-[50%] flex-col bg-white  '>
-                        <div className='  text-left  flex flex-col  gap-5 '>
-                            <h2 className='text-[30px] '>Welcome here  <span className='font-bold text-[35px]'>Log in</span> and enjoy the shopping</h2>
-                            <h4 className='text-[12px]'>Enter your Details below</h4>
-                            <div className='flex justify-center  font-serif text-xl text-red-500 p-10'>{loginError}</div>
+  {/* Form bölməsi */}
+  <div className="w-full md:w-1/2 flex justify-center md:justify-evenly flex-col items-center px-6 md:px-0 mt-8 md:mt-0">
+    <form onSubmit={handleSubmit} className="bg-white w-full max-w-md md:w-3/5 flex flex-col justify-between h-auto md:h-[70vh] p-6 rounded-2xl shadow-md">
+      <div className="text-left flex flex-col gap-4">
+        <h2 className="text-xl md:text-3xl">
+          Welcome here <span className="font-bold text-2xl md:text-4xl">Log in</span> and enjoy the shopping
+        </h2>
+        <h4 className="text-xs md:text-sm text-gray-600">Enter your Details below</h4>
+        <div className="flex justify-center font-serif text-base md:text-xl text-red-500 p-6">{loginError}</div>
+      </div>
 
-                        </div>
+      <div className="flex flex-col gap-8">
+        <input
+          key={loginError}
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={() => {
+            setTouched((prev) => ({ ...prev, email: true }));
+            validateField('email', email);
+          }}
+          className={`
+            border-b p-2 rounded outline-none transition-all duration-300
+            ${
+              loginError === "Wrong email or password" || ((submitAttempted || touched.email) && errors.email)
+                ? "border-red-500 text-red-500 placeholder-red-500"
+                : "border-gray-400 text-black placeholder-gray-400"
+            }
+            focus:border-blue-500
+          `}
+        />
+        {(submitAttempted || touched.email) && errors.email && (
+          <div className="text-red-500 text-sm">{errors.email}</div>
+        )}
 
-                        <div className='  flex  flex-col gap-10'>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPass(e.target.value)}
+          onBlur={() => {
+            setTouched((prev) => ({ ...prev, password: true }));
+            validateField('password', password);
+          }}
+          className={`
+            border-b p-2 rounded outline-none transition-all duration-300
+            ${
+              loginError === "Wrong email or password" || ((submitAttempted || touched.password) && errors.password)
+                ? "border-red-500 text-red-500 placeholder-red-500"
+                : "border-gray-400 text-black placeholder-gray-400"
+            }
+            focus:border-blue-500
+          `}
+        />
+        {(submitAttempted || touched.password) && errors.password && (
+          <div className="text-red-500 text-sm">{errors.password}</div>
+        )}
+      </div>
 
-                            <input
-                                key={loginError} 
-                                type="email"
-                                placeholder="Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                onBlur={() => {
-                                    setTouched(prev => ({ ...prev, email: true }));
-                                    validateField('email', email);
-                                }}
-                                className={`
-                                     border-b p-2 rounded outline-none transition-all duration-300
-                                     ${loginError === "Wrong email or password" || ((submitAttempted || touched.email) && errors.email)
-                                        ? "!border-red-500 !text-red-500 !placeholder-red-500"
-                                        : "border-gray-400 text-black placeholder-gray-400"
-                                    }
-                                            focus:border-blue-500
-                                              `}
-                                                   />
+      <div className="bg-red-400 rounded-2xl text-white flex justify-center mt-6 p-3 cursor-pointer relative">
+        <ToastContainer />
+        <button className="w-full cursor-pointer text-lg" type="submit">
+          Submit
+        </button>
+      </div>
 
+      <div className="border border-gray-300 p-4 rounded-2xl cursor-pointer flex items-center justify-center gap-4 mt-6 hover:bg-gray-100 transition">
+        <img className="w-5 h-5" src={googleİcon} alt="Google icon" />
+        <span className="text-sm md:text-base">Log in With Google</span>
+      </div>
 
+      <span className="cursor-pointer text-red-500 font-semibold mt-4 text-sm md:text-base">
+        Forget Password?
+      </span>
+    </form>
 
+    <div className="mt-6 text-center text-sm md:text-base">
+      Don't you have an account?{' '}
+      <Link to="/signin" className="underline text-blue-600 hover:text-blue-800">
+        Sign in
+      </Link>
+    </div>
+  </div>
+</div>
 
-                            {(submitAttempted || touched.email) && errors.email && (
-                                <div className="text-red-500 text-sm">{errors.email}</div>
-                            )}
-
-
-
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPass(e.target.value)}
-                                onBlur={() => {
-                                    setTouched(prev => ({ ...prev, password: true }));
-                                    validateField('password', password);
-                                }}
-                                className={`
-                                    border-b p-2 rounded outline-none transition-all duration-300
-                                    ${loginError === "Wrong email or password" || ((submitAttempted || touched.password) && errors.password)
-                                        ? "border-red-500 text-red-500 placeholder-red-500"
-                                        : "border-gray-400 text-black placeholder-gray-400"
-                                    }
-                                  focus:border-blue-500
-                                           `}
-                            />
-
-                            {(submitAttempted || touched.password) && errors.password && (
-                                <div className="text-red-500 text-sm">{errors.password}</div>
-                            )}
-                        </div>
-
-
-                        <div className=' bg-red-400   relative h-15 rounded-2xl text-white flex justify-center '>
-                            <ToastContainer />
-
-                            <button className=' cursor-pointer   w-full' type="submit">
-                                Submit
-                            </button>
-                        </div>
-                        <div className='border-1 p-4 rounded-2xl cursor-pointer flex items-center justify-center gap-5' >
-                            <img className='w-[20px] h-[20px]  ' src={googleİcon} alt="" />
-                            <span>Log in With Google</span>
-                        </div>
-                        <span className='   cursor-pointer  text-red-500 font-semibold'>Forget Password{' '}?</span>
-                    </form>
-                    <div>
-                        Dont  you have an account{' '}
-                        <Link to="/signin" className="underline">
-                            sign in
-                        </Link>
-                    </div>
-                </div>
-
-
-            </div>
             <Footer />
         </>
     )

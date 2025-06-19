@@ -34,7 +34,7 @@ const AllProduct = () => {
         <>
         
             <Header />
-            <div className='flex  mt-10 items-end ml-20 gap-5'>
+            <div className='flex  mt-10 items-center lg:items-end flex-col lg:flex-row px-21 justify-start w-full  xl:items-end  xl:ml-20 gap-5'>
                 <div className=' rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]'></div>
                 <h1 className=' text-2xl font-bold  capitalize'>{key2} Products</h1>
             </div>

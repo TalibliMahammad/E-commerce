@@ -14,7 +14,7 @@ const Home = () => {
     <Header/>
     <CategorySection/>
     <Main/>
-    <Footer/>
+    <Footer/> 
        
     </div>
   )

@@ -112,7 +112,7 @@ const FormRegister = () => {
                         <div className="text-red-500 text-sm">{errors.password}</div>
                     )}
 
-                    <div className=' bg-red-400  cursor-pointer relative h-15 rounded-2xl text-white flex justify-center '>
+                    <div className=' bg-red-400 mt-10 cursor-pointer relative h-15 rounded-2xl text-white flex justify-center '>
 
 
 

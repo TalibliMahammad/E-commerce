@@ -25,14 +25,13 @@ const Main = () => {
   return (
     <div className=''>
 
-
       <Electronics />
       <CategoryBox />
       <WomanDressSection />
       <PresentationSectionWoman />
       <OurProducts />
       <FeaturedSection />
-      <FeaturedBottom />
+      <FeaturedBottom /> 
 
     </div>
   )

@@ -34,16 +34,25 @@ export default function Electronics() {
     }
     return stars;
   };
+  useEffect(() => {
+    // Swiper-in avtomatik oynatma funksiyasını başlatmaq üçün
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.start();
+    }
+  }, []);
 
+  // Lazy loading və performans üçün decoding="async" əlavə edildi
+  // Swiper-in performansını artırmaq üçün lazy loading və decoding istifadə edildi
+  // Bu, şəkillərin yüklənməsini optimallaşdırır və səhifənin yüklənmə sürətini artırır
   return (
     <div className="mt-[100px] flex flex-col gap-10 ">
       <div className="pt-5">
-        <div className="pl-21">
+        <div className="  px-5 lg:pl-21 ">
           <div className="flex flex-col-reverse lg:flex-row items-center gap-0 lg:gap-[15px] font-bold">
             <div className="rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]"></div> Electronics
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between lg:justify-start gap-5 lg:gap-20 font-bold">
+          <div className="flex flex-col lg:flex-row items-center justify-between lg:justify-start gap-5 lg:gap-20 font-bold">
             <span className="text-[20px] md:text-[35px]">Laptops</span>
             <Timer />
           </div>
@@ -67,7 +76,7 @@ export default function Electronics() {
                 className="mySwiper h-[500px] overflow-hidden"
               >
                 {Laptops.slice(0, 15).map((item) => (
-                  <SwiperSlide key={item.id} className="max-w-[300px] !flex !items-center !justify-center">
+                  <SwiperSlide key={item.id} className=" w-[200px] lg:max-w-[300px] !flex !items-center !justify-center">
                     <div className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
                       <div
                         onClick={() => handleNavigate(item.id)}
