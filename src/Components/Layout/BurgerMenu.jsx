@@ -147,6 +147,8 @@ const BurgerMenu = ({ logData, wishCount = 0, cartCount = 0, setIsOpen }) => {
         </div>
       </nav>
 
+
+
       {/* Bottom Auth */}
       {!logData?.name && (
         <div className="px-6 mt-6 flex flex-col gap-3">
