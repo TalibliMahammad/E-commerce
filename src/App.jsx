@@ -13,6 +13,7 @@ import ContactUs from './Components/Layout/ContactUs'
 import PaymentSection from './Components/Layout/PaymentSection' 
 import AboutUs from './Components/Layout/OurStory'
 import CategoryProduct from '/src/Components/Layout/CategoryProduct'
+import OurServices from './Components/Layout/OurServices'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     <Route path="/login" element={<Login />} />
     <Route path="/signin" element={<Signin />} />
     <Route path="/ContactUs" element={<ContactUs />} />
+    <Route path="/ourservices" element={<OurServices />} />
     <Route path="/AboutUs" element={<AboutUs />} />
     <Route path="/WishList" element={<WishList />} />
     <Route path="/Cart" element={<Cart/>} />
