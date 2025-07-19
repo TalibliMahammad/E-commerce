@@ -10,30 +10,35 @@ import UserMenu from './UserMenu';
 import BurgerMenu from './BurgerMenu';
 
 const Header = () => {
+
+
   const logData = JSON.parse(localStorage.getItem("logData"))
+
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
-  const [inputValue, setInputValue] = useState("")
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const { data } = useSelector((state) => state.fetchState)
+  const [inputValue, setInputValue] = useState("")/* deyeri yenilemek üçün  */
+  const [showUserMenu, setShowUserMenu] = useState(false);/*   deyeri yenilemek*/
+  const { data } = useSelector((state) => state.fetchState)/*  datanı çəkmək storedan */
 
 
-  const dispatch = useDispatch()
-  const { WishListData } = useSelector((state) => state.wishState)
-  const DataCart = useSelector((state) => state.cartState.items)
+  const dispatch = useDispatch()/* funksiyani çəkmək counterslicedan */
+  const { WishListData } = useSelector((state) => state.wishState)/*  daxilindəki deyerlere çatmaq */
+  const DataCart = useSelector((state) => state.cartState.items)/*  daxilindeki deyerlere çatmaq */
 
   const handleInput = (e) => {
-    setInputValue(e.target.value)
-    dispatch(filterData(e.target.value))
+    setInputValue(e.target.value)/*  inputdan gelen deyeri useStatedeki deyerle evez  edir  */
+    dispatch(filterData(e.target.value))/*  funksiyanin icine daxil olan deyeri action payloada oturur */
   }
-  function collectAllArrays(obj) {
-    let result = [];
-
-    for (const key in obj) {
-      if (Array.isArray(obj[key])) {
+/* mürəkkəb obyketleri açmaq üçün funksiya */
+  function collectAllArrays(obj) {/*  içindəki obyektləri əhatə edir */
+    let result = [];/*  boş array lazımdır ki, arraylar; onun içinə yığsın */
+    for (const key in obj) {/*  bu sətir dataların keylerine çatır */
+      
+      if (Array.isArray(obj[key])) {/*  əgər arraydırsa, deyişkenin içinə əlavə et */
 
         result = result.concat(obj[key]);
-      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      } else if (typeof obj[key] === 'object' && obj[key] !== null) {/* əks halda  obyektdirsə,  və deyilsə null  yeniden çağır yoxla  arraydırsa deyişekene
+        əlave edecek */
         result = result.concat(collectAllArrays(obj[key]));
       }
     }
@@ -42,6 +47,7 @@ const Header = () => {
   }
 
   const allProducts = collectAllArrays(data);
+
   window.allProducts = allProducts;
   return (
     <header>
@@ -105,7 +111,7 @@ const Header = () => {
             >
               Our Services
             </NavLink>
-            {!logData?.name && (
+            {!logData?.name && (/* logdata varsa bu buttonlar gorunecek eks halda gorunmeyecek */
               <>
                 <li className='px-4 transition-all py-2 bg-blue-700 text-white font-mono hover:text-black rounded-lg hover:bg-green-400 duration-300'>
                   <Link to="/login">Log in</Link>
@@ -117,8 +123,8 @@ const Header = () => {
             )}
           </ul>
 
-          {/* Search bar, wishlist, cart, user icon */}
-          <div className="flex items-center gap-4">
+        
+          <div className=" hidden lg:flex items-center gap-4">
                   <div className="relative hidden md:block">
                     <input
                     type="text"
@@ -166,7 +172,8 @@ const Header = () => {
                     </div>
                     )}
                   </div>
-                  <div className="relative cursor-pointer" onClick={() => navigate('/wishlist')}>
+
+                  <div className="relative hidden md:block cursor-pointer" onClick={() => navigate('/wishlist')}>
                     <CiHeart className="text-2xl" />
                     {WishListData.length > 0 && (
                     <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
@@ -175,8 +182,8 @@ const Header = () => {
                     )}
                   </div>
 
-                
-            <div className="relative cursor-pointer" onClick={() => navigate('/cart')}>
+                 
+            <div className="relative hidden md:block  cursor-pointer" onClick={() => navigate('/cart')}>
               <CiShoppingCart className="text-2xl" />
               {DataCart.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
@@ -185,10 +192,10 @@ const Header = () => {
               )}
             </div>
 
-            {/* User Icon */}
-            <div className="relative cursor-pointer" onClick={() => setShowUserMenu(!showUserMenu)}>
+       
+            <div className="relative hidden md:block cursor-pointer" onClick={() => setShowUserMenu(!showUserMenu)}>
               <CiUser className="text-2xl" />
-              {/* User Menu Modal */}
+             
               {showUserMenu && (
                 <div className="absolute right-0 mt-2 z-50">
                   <UserMenu logData={logData} onClose={() => setShowUserMenu(false)} />

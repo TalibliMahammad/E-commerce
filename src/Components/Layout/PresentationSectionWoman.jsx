@@ -13,7 +13,7 @@ const PresentationSectionWoman = () => {
 
             <div className='mt-[100px] flex justify-center'>
                 <div className='  flex justify-center'>
-                    <video className='w-[96%]' autoPlay loop muted src={'./SlidersImages/3917525-uhd_4096_2160_25fps.mp4'}></video>
+                    <video className='' autoPlay loop muted src={'./SlidersImages/3917525-uhd_4096_2160_25fps.mp4'}></video>
                 </div>
             </div>
 

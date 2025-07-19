@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 const Timer = () => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2025-12-31T23:59:59"); // İstədiyin son tarix
+    const targetDate = new Date("2025-12-31T23:59:59"); 
     const now = new Date();
     const difference = targetDate - now;
 

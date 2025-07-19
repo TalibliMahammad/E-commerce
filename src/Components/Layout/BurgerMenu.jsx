@@ -49,7 +49,7 @@ const BurgerMenu = ({ logData, wishCount = 0, cartCount = 0, setIsOpen }) => {
       title: "Health & Beauty",
       subItems: ["Health", "Beauty"],
     },
-  ];
+  ];/*   burger menu daxilndeki kateqoriyalar */
 
   const handleNavigate = (catKey, subItem) => {
     const path = `/category/${catKey}/${subItem.toLowerCase().replace(/\s+/g, "-")}`;
@@ -58,10 +58,11 @@ const BurgerMenu = ({ logData, wishCount = 0, cartCount = 0, setIsOpen }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 h-full w-[75%] sm:w-[300px] bg-black/90 backdrop-blur-lg z-50 shadow-2xl flex flex-col justify-between py-6 border-r border-white/10 overflow-y-auto">
+    <div className="fixed  top-0 left-0 h-full w-[75%] sm:w-[300px] bg-black/90 backdrop-blur-lg z-50 shadow-2xl flex flex-col justify-between py-6 border-r border-white/10 overflow-y-auto">
       
       {/* Top icons */}
-      <div className="flex justify-between items-center px-6 mb-6">
+      {/* wishliste gedirsen klik edende */}
+      <div className="flex justify-between items-center px-6 mb-6 ">
         <Link to="/wishList" className="relative text-gray-300 hover:text-pink-400 transition">
           <CiHeart className="text-3xl" />
           {wishCount > 0 && (

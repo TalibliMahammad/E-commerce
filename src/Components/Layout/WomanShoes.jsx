@@ -47,12 +47,12 @@ const WomanShoes = () => {
             </div>
 
 
-            <div  className="flex flex-wrap gap-5  justify-between items-center w-full  mt-[30px] px-5 lg:px-18">
+            <div  className="flex flex-wrap gap-5  justify-center lg:justify-between items-center w-full  mt-[30px] px-5 lg:px-18">
 
                 {woman?.slice(0, 10).map((item, key) => (
                     
 
-                        <div   key={item.id}  className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
+                        <div   key={item.id}  className="   flex flex-col  rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
 
                             <div
                                 onClick={() => navigate(`/DetailPage/${item.id}`)}

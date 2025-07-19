@@ -23,9 +23,9 @@ const FeaturedSection = () => {
             </div>
 
 
-            <div className='flex   items-center justify-center lg:flex-row gap-10  '>
+            <div className='flex   items-center justify-center lg:flex-row gap-10 w-full  '>
                 <div className='mt-[40px] flex justify-center  '>
-                    <div className=' w-[96%] flex justify-center'>
+                    <div className='  flex justify-center '>
                         <video className='' autoPlay loop muted src={'./SlidersImages/4727645-uhd_3840_2160_25fps.mp4'}></video>
                     </div>
                 </div>
