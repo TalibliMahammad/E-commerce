@@ -34,16 +34,14 @@ export default function Electronics() {
     }
     return stars;
   };
+
   useEffect(() => {
-    // Swiper-in avtomatik oynatma funksiyasını başlatmaq üçün
     if (swiperRef.current) {
       swiperRef.current.autoplay.start();
     }
   }, []);
 
-  // Lazy loading və performans üçün decoding="async" əlavə edildi
-  // Swiper-in performansını artırmaq üçün lazy loading və decoding istifadə edildi
-  // Bu, şəkillərin yüklənməsini optimallaşdırır və səhifənin yüklənmə sürətini artırır
+
   return (
     <div className="mt-[100px] flex flex-col gap-10 ">
       <div className="pt-5">
@@ -62,14 +60,13 @@ export default function Electronics() {
           {Laptops.length > 0 && (
             <div className="w-full">
               <Swiper
-                // swiperRef-ə ref kimi bağla
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
                 }}
                 slidesPerView={'auto'}
                 spaceBetween={20}
                 pagination={{ type: 'fraction' }}
-                autoplay={{ delay: 5000, disableOnInteraction: false }} // autoplay interval artırıldı
+                autoplay={{ delay: 5000, disableOnInteraction: false }} 
                 loop={false}
                 modules={[Pagination, Navigation, Autoplay]}
                 navigation={true}

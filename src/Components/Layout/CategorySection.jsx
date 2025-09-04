@@ -68,7 +68,7 @@ const CategorySection = () => {
     <div className="w-full">
 
       <div className="flex justify-center gap-4">
-        {/* Sidebar (desktop) */}
+      
         <div className="hidden lg:flex w-[15%]">
           <ul className="text-[17px] flex flex-col justify-evenly w-[80%]">
             {categories.map((category) => (
@@ -105,8 +105,8 @@ const CategorySection = () => {
           </ul>
         </div>
 
-        {/* Mobil üçün açılan menyu */}
-        {mobileMenuOpen && (
+     
+       {/*  {mobileMenuOpen && (
           <div className="lg:hidden w-[90%] bg-stone-200 rounded-md p-4 overflow-auto max-h-[60vh]">
             <ul>
               {categories.map((category) => (
@@ -139,9 +139,9 @@ const CategorySection = () => {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
 
-        {/* Slayder hissəsi */}
+
         <span className="hidden lg:flex border-r border-stone-200"></span>
 
         <div className="mt-[50px] lg:ml-10 lg:h-[60vh] flex justify-center w-[100%] lg:w-[72%]">

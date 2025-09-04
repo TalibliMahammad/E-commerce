@@ -34,40 +34,25 @@ const WomanShoes = () => {
 
 
     return (
-        <div className="mt-[100px] w-full    flex flex-col ">
+        <div className="mt-[100px] w-full   flex flex-col ">
 
-         <div className="  px-5 lg:pl-21">
+            <div className="  px-5 lg:pl-21">
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-0 lg:gap-[15px] font-bold">
                     <div className="rotate-90 lg:rotate-0 bg-red-500 rounded-[5px] h-[40px] w-[15px]"></div> Woman
                 </div>
 
                 <div className="flex flex-col lg:flex-row items-center justify-between lg:justify-start gap-5 lg:gap-20 font-bold">
-                    <span className="text-[20px] md:text-[35px]">Sport Shoes</span>
+                    <span className="text-[20px] mt-5 md:text-[25px]">Sport Shoes</span>
                 </div>
             </div>
 
 
-            <Swiper
-                loopSlides={5}
-                onSwiper={setSwiperRef}
-                slidesPerView={'auto'}
-                centeredSlides={false}
-                spaceBetween={20}
-                pagination={{
-                    type: 'fraction',
-                }}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }}
-                loop={false}
-                modules={[Pagination, Navigation, Autoplay]}
-                navigation={true}
-                className="mySwiper h-[500px] w-full overflow-hidden "
-            >
-                {woman?.slice(0, 30).map((item, key) => (
-                    <SwiperSlide key={item.id} className=" w-[200px] lg:max-w-[300px]  !flex !items-center !justify-center">
-                        <div className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
+            <div  className="flex flex-wrap gap-5  justify-center lg:justify-between items-center w-full  mt-[30px] px-5 lg:px-18">
+
+                {woman?.slice(0, 10).map((item, key) => (
+                    
+
+                        <div   key={item.id}  className="   flex flex-col  rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-[400px] w-[300px] overflow-hidden group relative">
 
                             <div
                                 onClick={() => navigate(`/DetailPage/${item.id}`)}
@@ -106,9 +91,10 @@ const WomanShoes = () => {
                             </div>
 
                         </div>
-                    </SwiperSlide>
+                   
                 ))}
-            </Swiper>
+            </div>
+
 
 
             <div className="flex flex-col items-center justify-center  mt-[60px]  ">
@@ -119,7 +105,7 @@ const WomanShoes = () => {
                 </Link>
                 <div className="border-b border-gray-300 h-[1px] w-full mt-[60px] mr-auto"></div>
             </div>
-     
+
         </div>
 
     )

@@ -178,11 +178,6 @@ const WishList = () => {
                         Just Recommended
                     </div>
 
-                    <div className="text-2xl mt-4 md:mt-0">
-                        <div className="border rounded-2xl p-2 w-full max-w-[300px] flex justify-center cursor-pointer hover:bg-red-400 hover:text-white transition-all">
-                            Move All To Bag
-                        </div>
-                    </div>
                 </div>
 
                 <div className="flex flex-wrap justify-center md:justify-evenly mt-10 gap-6 px-2 md:px-20 mb-10">
