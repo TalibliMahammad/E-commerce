@@ -179,23 +179,24 @@ const DetailPage = ({ item, className }) => {
                     </button>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-between">
-                    <button className="w-full sm:w-[48%] bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 transition text-lg">
+
+                  <div className="flex flex-col sm:flex-row gap-4  rounded-xl justify-between">
+
+                    <button className=" w-full bg-red-500 text-white  rounded-xl hover:bg-red-600 transition text-lg">
                       Buy Now
                     </button>
 
-                    <div
-                      className={`w-full sm:w-[48%] text-white py-3 rounded-xl transition-all text-lg ${isCart ? 'bg-black' : 'bg-red-500 hover:bg-red-600'
-                        }`}
-                    >
+                   
+
                       <button
                         onClick={handleCart}
-                        className="w-full text-center px-4 py-2 transition-opacity duration-300 text-white"
+                         className={` text-white h-15 w-full rounded-xl transition-all text-lg ${isCart ? 'bg-black' : 'bg-red-500 hover:bg-red-600'
+                        }`}
                       >
                         {isCart ? 'Remove from Cart' : 'Add to Cart'}
                       </button>
                     </div>
-                  </div>
+                 
                 </div>
 
                 <div className="mt-8 border rounded-xl p-5 bg-gray-50 shadow-sm max-w-md">
@@ -256,12 +257,7 @@ const DetailPage = ({ item, className }) => {
                         />
 
                         <div className="absolute bottom-0 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <button
-                            onClick={() => onAddToCart(item)}
-                            className="w-full bg-black text-white py-2 font-semibold hover:bg-gray-800 transition-colors duration-300"
-                          >
-                            Add To Cart
-                          </button>
+                        <CartButton item={item} />
                         </div>
                       </div>
 

@@ -69,7 +69,7 @@ const FormRegister = () => {
                 /* and other goodies */
             }) => (
 
-                <form className='flex flex-col justify-between  h-full' onSubmit={handleSubmit}>
+                <form className='flex flex-col justify-between  gap-8  h-full' onSubmit={handleSubmit}>
                     <input
                         type="text"
                         name="name"
@@ -80,7 +80,7 @@ const FormRegister = () => {
                         className={`border-b p-2 rounded outline-none transition-all duration-300 ${(submitCount > 0 || touched.name) && errors.name ? 'border-red-500 text-red-500' : 'border-gray-400'
                             } focus:border-blue-500`}
                     />
-                    {(submitCount > 0 || touched.name) && errors.name && (
+                 {(submitCount > 0 || touched.name) && errors.name && (
                         <div className="text-red-500 text-sm">{errors.name}</div>
                     )}
                     <input

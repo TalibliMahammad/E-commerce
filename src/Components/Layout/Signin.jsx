@@ -20,7 +20,8 @@ const Signin = () => {
 
         {/* Form bölməsi */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-evenly flex-col items-center px-6 md:px-0 mt-8 md:mt-0">
-          <div className="bg-white w-full max-w-md md:w-3/5 flex flex-col justify-between h-auto md:h-[70vh] p-6 rounded-2xl shadow-md">
+
+          <div className="bg-white w-full max-w-md md:w-3/5 flex flex-col justify-between h-auto md:h-[80vh] p-6  rounded-2xl shadow-md">
             <div className="text-left flex flex-col gap-2 font-bold">
               <h2 className="text-2xl md:text-3xl">Create an Account</h2>
               <h4 className="text-xs md:text-sm text-gray-600">Enter your Details below</h4>
